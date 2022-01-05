@@ -1,0 +1,850 @@
+@import 'styles.scss';
+
+*:focus {
+    outline: none !important;
+	box-shadow: none !important;
+}
+
+body {
+	position: relative;
+	width: 1920px;
+	height: 900px;
+	margin: 0px;
+	padding: 0px;
+	background-color: $grey-1;
+	background-image: none;
+}
+
+.header-frame-table {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 1920px;
+	height: 70px;
+	right: 0px;
+	top: 0px;
+	background: $grey-1;
+}
+
+.user-frame {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 167px;
+	height: 40px;
+	left: 1713px;
+	top: 18px;
+	flex: none;
+	flex-grow: 0;
+	margin: 18px 40px 12px;
+}
+
+.user-frame-2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px 10px 0px 0px;
+	position: static;
+	width: 167px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	background: $white;
+	border-radius: 91px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 30px;
+}
+
+.user-picture {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px 10px 0px 0px;
+	position: static;
+	width: 137px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 0px;
+	position: static;
+	width: 72px;
+	height: 22px;
+	left: 55px;
+	top: 9px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 15px;
+}
+
+.user-name {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	position: static;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	background: $grey-black;
+	border-radius: 59px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	position: static;
+	font-family: $font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 130.9%;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-3;
+}
+
+.bi-chevron-down {
+	position: static;
+	width: 10px;
+	height: 6px;
+	left: 137px;
+	top: 10px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.logo-frame {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 1633px;
+	height: 40px;
+	left: 40px;
+	top: 18px;
+	flex: none;
+	flex-grow: 1;
+	margin: 18px 40px 12px;
+	}
+
+.table-body-outer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 1920px;
+	height: 830px;
+	left: 0px;
+	top: 70px;
+	background: $grey-1;
+}
+
+.table-body-inner {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 40px;
+	position: static;
+	width: 1796px;
+	height: 830px;
+	left: 62px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.table-outer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 1346px;
+	height: 750px;
+	left: 40px;
+	top: 40px;
+	overflow-y: scroll;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 1;
+	margin: 0px;
+}
+
+.table-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 1346px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 16px;
+}
+
+.table-header input[type=button] {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 5px 14px 5px 10px;
+	position: static;
+	width: 168px;
+	height: 40px;
+	left: 1178px;
+	top: 0px;
+	background: $white;
+	border: 1px solid $grey-4;
+	box-sizing: border-box;
+	border-radius: 8px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	cursor: pointer;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 18px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.table-header input[type=button]:hover {
+	opacity: 0.8;
+}
+
+.table-header input[type=button]:active {
+	opacity: 0.6;
+}
+
+.table-header input[type=button]:focus {
+	outline: none;
+}
+
+.table-search {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 447px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.table-search p {
+	position: static;
+	width: 80px;
+	height: 20px;
+	left: 0px;
+	top: 10px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.search-bar{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 12px 0px;
+	position: static;
+	width: 343px;
+	height: 40px;
+	left: 104px;
+	top: 0px;
+	background: $grey-4;
+	border-radius: 8px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	margin-left: 24px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	border: 0px;
+	color: $grey-5;
+}
+
+.bi-search {
+    width: 16px;
+	height: 16px;
+    color: $grey-3;
+    margin: 10px;
+	margin-left: 16px;
+	border: 0px;
+}
+
+.search-bar input[type=text] {
+	padding: 12px 0px;
+	width: 301px;
+	height: 40px;
+	background: $grey-4;
+	border-radius: 8px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	border: 0px;
+	color: $grey-5;
+}
+
+.table-outer-2 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 1346px;
+	height: 785px;
+	left: 0px;
+	top: 56px;
+	background: $white;
+	border: 1px solid $grey-4;
+	box-sizing: border-box;
+	border-radius: 20px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.table-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;	
+	position: static;
+	width: 1346px;
+	height: 724px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table>:not(caption)>*>* {
+    padding: 10px !important;
+}
+
+.table>:not(:first-child) {
+    border-top: 0px!important;
+}
+
+.tabla1 {
+	height: 40px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 18px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.tabla2 {
+	height: 40px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 18px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.table-th {
+	height: 40px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 11px;
+	line-height: 13px;
+	align-items: center;
+	text-transform: uppercase;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+	padding-bottom: 13px;
+}
+
+.bi-arrow-down-up {
+	position: static;
+	width: 16px;
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 1;
+	margin: 0px;
+	margin-left: 12px;
+	cursor: pointer;
+}
+
+.tagitem2 {
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 4px 8px;
+	position: static;
+	height: 22px;
+	left: 168px;
+	top: 0px;
+	background: $green;
+	border-radius: 6px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 14px;
+	text-transform: uppercase;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $white;
+}
+
+.filter-outer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 28px 24px 24px;
+	position: static;
+	width: 330px;
+	height: 647px;
+	left: 1426px;
+	top: 40px;
+	background: $white;
+	border: 1px solid $grey-4;
+	box-sizing: border-box;
+	border-radius: 20px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 40px;
+}
+
+.filter-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 21px;
+	left: 24px;
+	top: 28px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.bi-trash {
+	position: static;
+	width: 20px;
+	height: 20px;
+	left: 262px;
+	top: 0.5px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.filter-body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 546px;
+	left: 24px;
+	top: 77px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 28px 0px;
+}
+
+.frame_1380 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 138px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 25px;
+}
+
+.frame_1431 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 12px;
+}
+
+.p_1431 {
+	width: 282px;
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.frame_1431 input[type=text] {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 282px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
+.f_1431 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 282px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+	}
+
+.frame_1430 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 55px;
+	left: 0px;
+	top: 83px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.frame_1401 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 24px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 7px;
+}
+
+.frame_1403 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 24px;
+	left: 0px;
+	top: 31px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.tagitem {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 24px;
+	padding: 5px 6px 5px 10px;
+	background: $grey-4;
+	border-radius: 20px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 14px;
+	text-transform: uppercase;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.bi-x {
+	cursor: pointer;
+}
+
+.frame_1433 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 68px;
+	left: 0px;
+	top: 163px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 25px;
+}
+
+.frame_1434 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 68px;
+	left: 0px;
+	top: 256px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 25px;
+}
+
+.frame_1423 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 86px;
+	left: 0px;
+	top: 349px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 25px;
+}
+
+.frame_1414 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 24px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
+.frame_1415 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 24px;
+	left: 0px;
+	top: 34px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.frame_1435 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 282px;
+	height: 86px;
+	left: 0px;
+	top: 460px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+#checkboxid {
+	position: static;
+	width: 14px;
+	height: 14px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	flex-grow: 0;
+	margin: 5px;
+	background: $grey-2;
+}
+
+#remember {
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+	flex: none;
+	flex-grow: 1;
+	margin: 0px;
+}
+
+.table-outer::-webkit-scrollbar {
+    display: none;
+}

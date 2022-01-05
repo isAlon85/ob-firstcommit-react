@@ -1,0 +1,816 @@
+@import 'styles.scss';
+
+*:focus {
+    outline: none !important;
+	box-shadow: none !important;
+}
+
+body {
+	position: relative;
+	width: 1920px;
+	height: 900px;
+	margin: 0px;
+	padding: 0px;
+	background-color: $grey-1;
+	background-image: none;
+}
+
+.header-frame-student {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 1920px;
+	height: 70px;
+	right: 0px;
+	top: 0px;
+	background: $grey-1;
+}
+
+.user-frame {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 167px;
+	height: 40px;
+	left: 1713px;
+	top: 18px;
+	flex: none;
+	flex-grow: 0;
+	margin: 18px 40px 12px;
+}
+
+.user-frame-2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px 10px 0px 0px;
+	position: static;
+	width: 167px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	background: $white;
+	border-radius: 91px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 30px;
+}
+
+.user-picture {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0px 10px 0px 0px;
+	position: static;
+	width: 137px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 0px;
+	position: static;
+	width: 72px;
+	height: 22px;
+	left: 55px;
+	top: 9px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 15px;
+}
+
+.user-name {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	position: static;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	background: $grey-black;
+	border-radius: 59px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	position: static;
+	font-family: $font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 130.9%;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-3;
+}
+
+.bi-chevron-down {
+	position: static;
+	width: 10px;
+	height: 6px;
+	left: 137px;
+	top: 10px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.back-frame-outer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	width: 1633px;
+	height: 40px;
+	left: 40px;
+	top: 18px;
+	flex: none;
+	flex-grow: 1;
+	margin: 18px 40px 12px;
+	}
+	
+.back-frame-inner {
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+position: static;
+width: 76px;
+height: 20px;
+left: 0px;
+top: 10px;
+border-radius: 8px;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 18px;
+	color: $grey-black;
+	flex: none;
+	flex-grow: 0;
+	margin-top: 28px;
+	margin-bottom: 28px;
+	cursor: pointer;
+}
+
+.bi-arrow-left {
+	position: static;
+width: 20px;
+height: 20px;
+left: 0px;
+top: 0px;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px;
+margin-right: 10px;
+color: $grey-black;
+}
+
+.frame_1998 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 1920px;
+	height: 830px;
+	left: 0px;
+	top: 70px;
+	background: $grey-1;
+}
+
+.frame_2000 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 40px;
+	padding-bottom: 0px;
+	position: static;
+	width: 1796px;
+	height: 830px;
+	left: 62px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.frame_2005 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 24px;
+	position: static;
+	width: 500px;
+	height: 784px;
+	left: 0px;
+	top: 0px;
+	overflow-y: scroll;
+	background: $white;
+	border: 1px solid $grey-4;
+	box-sizing: border-box;
+	border-radius: 20px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.frame_2005::-webkit-scrollbar {
+    display: none;
+}
+
+.frame_1994 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 452px;
+	height: 90px;
+	left: 24px;
+	top: 24px;
+	flex: none;
+	order: 0;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 48px;
+}
+
+.frame_123 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 90px;
+	height: 90px;
+	left: 0px;
+	top: 0px;
+	background: #F3F3F5;
+	border-radius: 20px;
+	flex: none;
+	order: 0;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.cover {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 12px;
+	position: static;
+	width: 90px;
+	height: 90px;
+	left: 0px;
+	top: 0px;
+	background: url(../profile_90.jpg), $white;
+	border: 4px solid $grey-4;
+	border-radius: 20px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.frame_1986 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 338px;
+	height: 53px;
+	left: 114px;
+	top: 18.5px;
+	flex: none;
+	order: 1;
+	align-self: stretch;
+	flex-grow: 1;
+	margin: 0px;
+	margin-left: 24px;
+	margin-top: 16.5px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 24px;
+	line-height: 28px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.frame_1986 p {
+	margin-bottom: 7px;
+}
+
+.frame_1927 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px;
+	position: static;
+	height: 16px;
+	left: 28px;
+	top: 18px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	margin-right: 8px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
+.bi-geo-alt {
+	position: static;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px;
+	margin-left: 0px;
+	margin-right: 7px;
+	color: $grey-5;
+}
+
+.frame_2041 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 452px;
+	height: 598px;
+	left: 24px;
+	top: 162px;					
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.frame_1433 {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 0px;
+		position: static;
+		width: 452px;
+		height: 68px;
+		left: 0px;
+		top: 0px;
+		flex: none;
+		order: 0;
+		align-self: stretch;
+		flex-grow: 0;
+		margin: 0px;
+		margin-bottom: 24px;
+}
+
+.frame_1433 p {
+		height: 16px;
+		left: 0px;
+		top: 0px;
+		margin: 0px;
+		margin-bottom: 12px;
+		font-family: $font;
+		font-style: normal;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 16px;
+		letter-spacing: -0.01em;
+		font-feature-settings: 'pnum' on, 'lnum' on;
+		color: $grey-black;
+}
+
+.frame_1433 input[type=text] {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 452px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
+.frame_1434 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 452px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 24px;
+}
+
+.frame_1435 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 214px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 24px;
+	margin-right: 24px;
+}
+
+.frame_1435 p {
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.frame_1435 input[type=text] {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 214px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
+.f_1435 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 214px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
+.frame_1436 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 452px;
+	height: 68px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 24px;
+}
+
+.button_upload {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 14px 5px 10px;
+position: static;
+width: 163px;
+height: 40px;
+left: 0px;
+top: 0px;
+border: 0px;
+background: $grey-2;
+border-radius: 8px;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px;
+margin-right: 10px;
+cursor: pointer;
+font-family: $font;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 18px;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: $white;
+}
+
+.button_upload:hover {
+	opacity: 0.8;
+}
+
+.button_upload:active {
+	opacity: 0.6;
+}
+
+.button_upload:focus {
+	outline: none;
+}
+
+.file-selector {
+	display: none;
+}
+
+.button_delete {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 5px 14px 5px 10px;
+	position: static;
+	width: 101px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	border-color: $grey-black;
+	background: $white;
+	border-radius: 8px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	cursor: pointer;
+	font-family: $font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.button_delete:hover {
+	opacity: 0.8;
+}
+
+.button_delete:active {
+	opacity: 0.6;
+}
+
+.button_delete:focus {
+	outline: none;
+}
+
+.bi-cloud-arrow-up {
+	margin-right: 10px;
+}
+
+.bi-trash {
+	margin-right: 10px;
+}
+
+.frame_1380 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 452px;
+	height: 138px;
+	left: 0px;
+	top: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+}
+
+.frame_1380 p {
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.frame_1380 input[type=text] {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 452px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 15px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
+.frame_1430 {
+display: flex;
+flex-direction: row;
+align-items: center;
+flex-wrap: wrap;
+align-content: flex-start;
+justify-content: flex-start;
+padding: 0px;
+position: static;
+width: 452px;
+height: 55px;
+left: 0px;
+top: 460px;
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+margin: 0px;
+}
+
+.tagitem {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 24px;
+	padding: 5px 6px 5px 10px;
+	background: $grey-4;
+	border-radius: 20px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	margin-bottom: 7px;
+	margin-right: 6px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 14px;
+	text-transform: uppercase;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.bi-x {
+	height: 18px;
+	width: 18px;
+	cursor: pointer;
+}
+
+.pdf-frame {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 1176px;
+	height: 750px;
+	left: 580px;
+	top: 40px;
+	box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+	flex: none;
+	order: 1;
+	align-self: stretch;
+	flex-grow: 1;
+	margin: 0px;
+	margin-left: 40px;
+}
+
+.pdf-viewer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	position: static;
+	width: 1176px;
+	height: 750px;
+	left: 580px;
+	box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.25);
+	border-radius: 20px;
+	flex: none;
+	align-self: stretch;
+	flex-grow: 1;
+	margin: 0px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/loginpage.scss';
-import Logo from './Logo';
-import Footer from './Footer';
+import '../styles/loginpage.scss';
+import Logo from '../components/pure/Logo';
+import Footer from '../components/pure/Footer';
 
 function LoginForm() {
   return (
