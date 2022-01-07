@@ -29,37 +29,37 @@ body {
 }
 
 .user-frame {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	align-items: center;
-	padding: 0px;
-	position: static;
-	width: 167px;
-	height: 40px;
-	left: 1713px;
-	top: 18px;
-	flex: none;
-	flex-grow: 0;
-	margin: 18px 40px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    position: static;
+    width: 167px;
+    height: 40px;
+    left: 1713px;
+    top: 18px;
+    flex: none;
+    flex-grow: 0;
+    margin: 18px 40px 12px 0px;
 }
 
 .user-frame-2 {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	padding: 0px 10px 0px 0px;
-	position: static;
-	width: 167px;
-	height: 40px;
-	left: 0px;
-	top: 0px;
-	background: $white;
-	border-radius: 91px;
-	flex: none;
-	flex-grow: 0;
-	margin: 0px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 0px 0px 0px;
+    position: static;
+    width: 167px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    border-radius: 91px;
+    flex: none;
+    flex-grow: 0;
+    margin: 0px 0px;
 }
 
 .user-picture {

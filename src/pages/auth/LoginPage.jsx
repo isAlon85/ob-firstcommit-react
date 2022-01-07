@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import '../styles/loginpage.scss';
-import Logo from '../components/pure/Logo';
-import Footer from '../components/pure/Footer';
+import '../../styles/loginpage.scss';
+import Logo from '../../components/pure/Logo';
+import Footer from '../../components/pure/Footer';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
 
@@ -11,6 +12,13 @@ function LoginPage() {
             document.body.className='';
         }
     }, [])
+
+    const history = useNavigate();
+
+    const dashboard = (e) => {
+        e.preventDefault();
+        history('/dashboard');
+    }
 
   return (
     <div className="login-page">
@@ -32,7 +40,7 @@ function LoginPage() {
                     <span id="remember">Recuérdame</span>
                     <span id="forgotten"><a href="../../forgotten.html" id="forgotten">He olvidado la contraseña</a></span>
                 </div>
-                <input type="button" value="Iniciar Sesión"></input>
+                <input type="button" value="Iniciar Sesión" onClick={dashboard}></input>
             </div>
         </div>
         <Footer></Footer>

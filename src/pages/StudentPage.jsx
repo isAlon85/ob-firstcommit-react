@@ -3,6 +3,13 @@ import '../styles/studentpage.scss';
 import StudentHeader from '../components/pure/StudentHeader';
 
 function StudentPage() {
+
+    function deleteTag(tag) {
+        const myTag = document.getElementById(tag);
+        const parent = myTag.parentNode;
+        parent.removeChild(myTag);
+    }
+
   return (
     <div>
       <StudentHeader></StudentHeader>
@@ -126,11 +133,11 @@ function StudentPage() {
                                 </datalist>
                             </form>
                             <div className="frame_1430" id="list">
-                                <span className="tagitem" id="1">HTML&CSS<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                <span className="tagitem" id="1">HTML&CSS<svg onClick={() => deleteTag(1)} xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                   </svg>
                                 </span>
-                                <span className="tagitem" id="2">REACT<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                <span className="tagitem" id="2">REACT<svg onClick={() => deleteTag(2)} xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                   </svg>
                                 </span>
@@ -139,7 +146,7 @@ function StudentPage() {
                     </div>
                 </div>
             <div className="pdf-frame">
-                <iframe id="pdf-viewer" className="pdf-viewer" src="" type="application/pdf" width="100%" height="100%"/>
+                <iframe title="Resume" id="pdf-viewer" className="pdf-viewer" src="" type="application/pdf" width="100%" height="100%"/>
             </div>
         </div>
       </div>        
