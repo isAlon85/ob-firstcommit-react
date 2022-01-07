@@ -13,63 +13,63 @@ function StudentPage() {
   return (
     <div>
       <StudentHeader></StudentHeader>
-      <div className="frame_1998">
-        <div className="frame_2000">
-                <div className="frame_2005">
-                    <div className="frame_1994">
-                        <div className="frame_123">
+      <div className="student-body-outer">
+        <div className="student-body-inner">
+                <div className="student-form">
+                    <div className="student-header">
+                        <div className="picture-frame">
                             <div className="cover">
                             </div>
                         </div>
-                        <div className="frame_1986">
+                        <div className="student-info-frame">
                             <p>Nombre Alumno</p>
-                            <div className="frame_1927">
+                            <div className="student-info-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-geo-alt" viewBox="0 0 16 16">
                                     <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>
-                                <div className="frame_1927">
+                                <div className="student-info-text">
                                     Valencia
                                 </div>
-                                <div className="frame_1927">
+                                <div className="student-info-text">
                                     |
                                 </div>
-                                <div className="frame_1927">
+                                <div className="student-info-text">
                                     España
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="frame_2041">
-                        <div className="frame_1433">
+                    <div className="student-info-frame-inner">
+                        <div className="user-form-big">
                             <p>Nombre y Apellidos</p>
                             <input type="text" placeholder="Nombre Alumno"/>
                         </div>
-                        <div className="frame_1434">
-                            <div className="frame_1435">
+                        <div className="user-form-split">
+                            <div className="user-form-splitted">
                                 <p>Teléfono</p>
                                 <input type="text" placeholder="+34 666555222"/>
                             </div>
-                            <div className="frame_1435">
+                            <div className="user-form-splitted">
                                 <p>Email</p>
                                 <input type="text" placeholder="nalumno@ob.com"/>
                             </div>
                         </div>
-                        <div className="frame_1434">
-                            <div className="frame_1435">
+                        <div className="user-form-split">
+                            <div className="user-form-splitted">
                                 <p>País</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="f_1435" name="combo">
+                                    <select className="select-user-form-splitted" name="combo">
                                         <option value="1"defaultValue>España</option>
                                         <option value="2">Estados Unidos</option>
                                         <option value="3">Francia</option>
                                     </select>
                                 </form>
                             </div>
-                            <div className="frame_1435">
+                            <div className="user-form-splitted">
                                 <p>Ciudad</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="f_1435" name="combo">
+                                    <select className="select-user-form-splitted" name="combo">
                                         <option value="1"defaultValue>Valencia</option>
                                         <option value="2">Madrid</option>
                                         <option value="3">Barcelona</option>
@@ -77,29 +77,29 @@ function StudentPage() {
                                 </form>
                             </div>
                         </div>
-                        <div className="frame_1434">
-                            <div className="frame_1435">
+                        <div className="user-form-split">
+                            <div className="user-form-splitted">
                                 <p>Translado</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="f_1435" name="combo">
+                                    <select className="select-user-form-splitted" name="combo">
                                         <option value="1"defaultValue>No</option>
                                         <option value="2">Sí</option>
                                     </select>
                                 </form>
                             </div>
-                            <div className="frame_1435">
+                            <div className="user-form-splitted">
                                 <p>Presencialidad</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="f_1435" name="combo">
+                                    <select className="select-user-form-splitted" name="combo">
                                         <option value="1"defaultValue>En remoto</option>
                                         <option value="2">Presencial</option>
                                     </select>
                                 </form>
                             </div>
                         </div>
-                        <div className="frame_1433">
+                        <div className="user-form-big">
                             <p>Documento CV</p>
-                            <div className="frame_1436">
+                            <div className="resume-button-container">
                                 <label className="button_upload">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"/>
@@ -117,7 +117,7 @@ function StudentPage() {
                                 </button>
                             </div>
                         </div>
-                        <div className="frame_1380">
+                        <div className="user-form-bigger">
                             <p>Etiquetas</p>
                             <form name="formulario" method="post" action="">
                                 <input type="text" id="tag" placeholder="Escribe para buscar...." list="items" />
@@ -132,7 +132,7 @@ function StudentPage() {
                                   <option >Hibernate</option>
                                 </datalist>
                             </form>
-                            <div className="frame_1430" id="list">
+                            <div className="tagitem-container" id="list">
                                 <span className="tagitem" id="1">HTML&CSS<svg onClick={() => deleteTag(1)} xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
                                     <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                   </svg>

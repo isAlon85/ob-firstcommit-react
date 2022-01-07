@@ -555,7 +555,7 @@ table {
 	margin-bottom: 25px;
 }
 
-.frame_1431 {
+.labels-inner {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -589,7 +589,7 @@ table {
 	color: $grey-black;
 }
 
-.frame_1431 input[type=text] {
+.labels-inner input[type=text] {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -617,7 +617,7 @@ table {
 	color: $grey-2;
 }
 
-.f_1431 {
+.select-frame {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -645,7 +645,7 @@ table {
 	color: $grey-2;
 	}
 
-.frame_1430 {
+.label-icons-frame {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -661,7 +661,7 @@ table {
 	margin: 0px;
 }
 
-.frame_1401 {
+.label-icons-frame-first {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -678,7 +678,7 @@ table {
 	margin-bottom: 7px;
 }
 
-.frame_1403 {
+.label-icons-frame-second {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -720,7 +720,7 @@ table {
 	cursor: pointer;
 }
 
-.frame_1433 {
+.country-outer {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -737,7 +737,7 @@ table {
 	margin-bottom: 25px;
 }
 
-.frame_1434 {
+.location-outer {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -754,7 +754,7 @@ table {
 	margin-bottom: 25px;
 }
 
-.frame_1423 {
+.remote-outer {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -771,7 +771,7 @@ table {
 	margin-bottom: 25px;
 }
 
-.frame_1414 {
+.checkbox-option {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -788,23 +788,7 @@ table {
 	margin-bottom: 10px;
 }
 
-.frame_1415 {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	padding: 0px;
-	position: static;
-	width: 282px;
-	height: 24px;
-	left: 0px;
-	top: 34px;
-	flex: none;
-	align-self: stretch;
-	flex-grow: 0;
-	margin: 0px;
-}
-
-.frame_1435 {
+.transfer-outer {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

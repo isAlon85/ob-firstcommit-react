@@ -191,7 +191,7 @@ margin-right: 10px;
 color: $grey-black;
 }
 
-.frame_1998 {
+.student-body-outer {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -205,7 +205,7 @@ color: $grey-black;
 	background: $grey-1;
 }
 
-.frame_2000 {
+.student-body-inner {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -222,7 +222,7 @@ color: $grey-black;
 	margin: 0px 0px;
 }
 
-.frame_2005 {
+.student-form {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -243,11 +243,11 @@ color: $grey-black;
 	margin: 0px;
 }
 
-.frame_2005::-webkit-scrollbar {
+.student-form::-webkit-scrollbar {
     display: none;
 }
 
-.frame_1994 {
+.student-header {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -265,7 +265,7 @@ color: $grey-black;
 	margin-bottom: 48px;
 }
 
-.frame_123 {
+.picture-frame {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -304,7 +304,7 @@ color: $grey-black;
 	margin: 0px 0px;
 }
 
-.frame_1986 {
+.student-info-frame {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -330,11 +330,11 @@ color: $grey-black;
 	color: $grey-black;
 }
 
-.frame_1986 p {
+.student-info-frame p {
 	margin-bottom: 7px;
 }
 
-.frame_1927 {
+.student-info-text {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -373,7 +373,7 @@ color: $grey-black;
 	color: $grey-5;
 }
 
-.frame_2041 {
+.student-info-frame-inner {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -389,7 +389,7 @@ color: $grey-black;
 	margin: 0px;
 }
 
-.frame_1433 {
+.user-form-big {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -407,7 +407,7 @@ color: $grey-black;
 		margin-bottom: 24px;
 }
 
-.frame_1433 p {
+.user-form-big p {
 		height: 16px;
 		left: 0px;
 		top: 0px;
@@ -423,7 +423,7 @@ color: $grey-black;
 		color: $grey-black;
 }
 
-.frame_1433 input[type=text] {
+.user-form-big input[type=text] {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -451,7 +451,7 @@ color: $grey-black;
 	color: $grey-2;
 }
 
-.frame_1434 {
+.user-form-split {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -468,7 +468,7 @@ color: $grey-black;
 	margin-bottom: 24px;
 }
 
-.frame_1435 {
+.user-form-splitted {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -486,7 +486,7 @@ color: $grey-black;
 	margin-right: 24px;
 }
 
-.frame_1435 p {
+.user-form-splitted p {
 	height: 16px;
 	left: 0px;
 	top: 0px;
@@ -502,7 +502,7 @@ color: $grey-black;
 	color: $grey-black;
 }
 
-.frame_1435 input[type=text] {
+.user-form-splitted input[type=text] {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -530,7 +530,7 @@ color: $grey-black;
 	color: $grey-2;
 }
 
-.f_1435 {
+.select-user-form-splitted {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -558,7 +558,7 @@ color: $grey-black;
 	color: $grey-2;
 }
 
-.frame_1436 {
+.resume-button-container {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -576,32 +576,32 @@ color: $grey-black;
 }
 
 .button_upload {
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 5px 14px 5px 10px;
-position: static;
-width: 163px;
-height: 40px;
-left: 0px;
-top: 0px;
-border: 0px;
-background: $grey-2;
-border-radius: 8px;
-flex: none;
-order: 0;
-flex-grow: 0;
-margin: 0px;
-margin-right: 10px;
-cursor: pointer;
-font-family: $font;
-font-style: normal;
-font-weight: bold;
-font-size: 15px;
-line-height: 18px;
-font-feature-settings: 'pnum' on, 'lnum' on;
-color: $white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 5px 14px 5px 10px;
+	position: static;
+	width: 163px;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	border: 0px;
+	background: $grey-2;
+	border-radius: 8px;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px;
+	margin-right: 10px;
+	cursor: pointer;
+	font-family: $font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $white;
 }
 
 .button_upload:hover {
@@ -667,7 +667,7 @@ color: $white;
 	margin-right: 10px;
 }
 
-.frame_1380 {
+.user-form-bigger {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -683,7 +683,7 @@ color: $white;
 	margin: 0px;
 }
 
-.frame_1380 p {
+.user-form-bigger p {
 	height: 16px;
 	left: 0px;
 	top: 0px;
@@ -699,7 +699,7 @@ color: $white;
 	color: $grey-black;
 }
 
-.frame_1380 input[type=text] {
+.user-form-bigger input[type=text] {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -728,7 +728,7 @@ color: $white;
 	color: $grey-2;
 }
 
-.frame_1430 {
+.tagitem-container {
 display: flex;
 flex-direction: row;
 align-items: center;
