@@ -1,6 +1,6 @@
 import React from 'react';
 
-function User() {
+function UserHeader() {
   return (
     <div className="user-frame">
         <div className="user-frame-2">
@@ -18,4 +18,4 @@ function User() {
   );
 }
 
-export default User;
+export default UserHeader;

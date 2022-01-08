@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './Logo';
-import User from './User';
+import UserHeader from './UserHeader';
 
 
 function TableHeader() {
@@ -9,7 +9,7 @@ function TableHeader() {
         <div className="logo-frame">
             <Logo></Logo>
         </div>
-        <User></User>
+        <UserHeader></UserHeader>
     </div>
   );
 }
