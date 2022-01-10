@@ -124,7 +124,7 @@
 	margin: 45px 0px;
 }
 
-.form-frame input[type=button] {
+.form-frame input[type=submit] {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -153,15 +153,15 @@
 	cursor: pointer;
 }
 
-.form-frame input[type=button]:hover {
+.form-frame input[type=submit]:hover {
 	opacity: 0.8;
 }
 
-.form-frame input[type=button]:active {
+.form-frame input[type=submit]:active {
 	opacity: 0.6;
 }
 
-.form-frame input[type=button]:focus {
+.form-frame input[type=submit]:focus {
 	outline: none;
 }
 
@@ -198,7 +198,7 @@
 .field-frame {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 	padding: 0px;
 	position: static;
 	width: 450px;
@@ -209,6 +209,14 @@
 	align-self: stretch;
 	flex-grow: 0;
 	margin-bottom: 30px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: red;
 }
 
 .field-frame label {
@@ -227,7 +235,7 @@
 	margin-bottom: 12px;
 }
 
-.field-frame input[type=text] {
+.field-frame input[type=email] {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
