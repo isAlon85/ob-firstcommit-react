@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { login } from '../../services/axiosService'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -6,9 +6,24 @@ import * as Yup from 'yup';
 
 const Axios = () => {
 
-    const initialCredentials = {
-        email: '',
-        password: ''
+    useEffect(() => {
+        document.title = "OB Alumnos Login";
+        getCookieData();
+        document.getElementById('email').value = initialMail;
+        document.getElementById('password').value = initialPassword;
+        if (initialMail !== '' && initialPassword !== '') setCheckboxCheked(true);
+        return () => {
+            
+        }
+    },[])
+
+    const [initialMail, setInitialMail] = useState('');
+    const [initialPassword, setInitialPassword] = useState('');
+    const [checkboxChecked, setCheckboxCheked] = useState(false);
+
+    var initialCredentials = {
+        email: initialMail,
+        password: initialPassword
     }
 
     const loginSchema = Yup.object().shape(
@@ -39,11 +54,54 @@ const Axios = () => {
             .finally(() => console.log('Login done'))
     }
 
+    const setCookie = () => {
+        var mail = document.getElementById('email').value;
+        var passwd = document.getElementById('password').value;
+        var checkBox = document.getElementById("checkboxid");
+
+        if (checkBox.checked === true) {
+            document.cookie = "email=" + mail + "";
+            document.cookie = "pwd=" + passwd + "";
+        } else {
+            document.cookie = "email=; max-age=0";
+            document.cookie = "pwd=; max-age=0";
+        }
+
+    }
+
+    const getCookieData = () => {
+        console.log(document.cookie);
+        var mail = getCookie('email');
+        var pwd = getCookie('pwd');
+        setInitialMail(mail);
+        setInitialPassword(pwd);
+
+        //console.log(initialCredentials)
+    }
+
+    const getCookie = (cname) => {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
     return (
         <div>
+        {console.log(initialCredentials)}
             <Formik
                 // *** Initial values that the form will take
-                initialValues = { initialCredentials }
+                enableReinitialize = {true}
+                initialValues = { initialCredentials } 
                 // *** Yup Validation Schema ***
                 validationSchema = {loginSchema}
                 // ** onSubmit Event
@@ -84,11 +142,11 @@ const Axios = () => {
                                     </div>
                                 </div>
                                 <div className="remember-frame">
-                                    <input type="checkbox" id="checkboxid" className="checkbox"/>
+                                    <input type="checkbox" id="checkboxid" className="checkbox" />
                                     <span id="remember">Recuérdame</span>
                                     <span id="forgotten"><a href="../../forgotten.html" id="forgotten">He olvidado la contraseña</a></span>
                                 </div>
-                                <input type="submit" value="Iniciar Sesión"></input>
+                                <input type="submit" value="Iniciar Sesión" onClick={setCookie}></input>
                                 {isSubmitting ? (<p>Login your credentials...</p>): null}
                             </div>
                         </Form>
