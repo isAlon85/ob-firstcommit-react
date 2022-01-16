@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { login } from '../../services/axiosService'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
+import { Link } from 'react-router-dom';
 
 const Axios = () => {
 
@@ -11,7 +11,6 @@ const Axios = () => {
         getCookieData();
         document.getElementById('email').value = initialMail;
         document.getElementById('password').value = initialPassword;
-        if (initialMail !== '' && initialPassword !== '') setCheckboxCheked(true);
         return () => {
             
         }
@@ -19,7 +18,7 @@ const Axios = () => {
 
     const [initialMail, setInitialMail] = useState('');
     const [initialPassword, setInitialPassword] = useState('');
-    const [checkboxChecked, setCheckboxCheked] = useState(false);
+    const [initialChecked, setInitialChecked] = useState(false);
 
     var initialCredentials = {
         email: initialMail,
@@ -60,11 +59,13 @@ const Axios = () => {
         var checkBox = document.getElementById("checkboxid");
 
         if (checkBox.checked === true) {
-            document.cookie = "email=" + mail + "";
-            document.cookie = "pwd=" + passwd + "";
+            document.cookie = "email=" + mail + "; max-age=" + 7 * 24 * 60 * 60;
+            document.cookie = "pwd=" + passwd + "; max-age=" + 7 * 24 * 60 * 60;
+            document.cookie = "checked=true; max-age=" + 7 * 24 * 60 * 60;
         } else {
             document.cookie = "email=; max-age=0";
             document.cookie = "pwd=; max-age=0";
+            document.cookie = "checked=; max-age=0";
         }
 
     }
@@ -73,10 +74,10 @@ const Axios = () => {
         console.log(document.cookie);
         var mail = getCookie('email');
         var pwd = getCookie('pwd');
+        var checked = getCookie('pwd');
         setInitialMail(mail);
         setInitialPassword(pwd);
-
-        //console.log(initialCredentials)
+        setInitialChecked(checked);
     }
 
     const getCookie = (cname) => {
@@ -95,9 +96,12 @@ const Axios = () => {
         return "";
     }
 
+    const changeChecked = () => {
+
+    }
+
     return (
         <div>
-        {console.log(initialCredentials)}
             <Formik
                 // *** Initial values that the form will take
                 enableReinitialize = {true}
@@ -142,9 +146,9 @@ const Axios = () => {
                                     </div>
                                 </div>
                                 <div className="remember-frame">
-                                    <input type="checkbox" id="checkboxid" className="checkbox" />
-                                    <span id="remember">Recuérdame</span>
-                                    <span id="forgotten"><a href="../../forgotten.html" id="forgotten">He olvidado la contraseña</a></span>
+                                    <input type="checkbox" id="checkboxid" className="checkbox" defaultChecked={ initialChecked }/>
+                                    <span id="remember-login">Recuérdame</span>
+                                    <span id="forgotten"><Link to={'/forgot'} id="forgotten">He olvidado la contraseña</Link></span>
                                 </div>
                                 <input type="submit" value="Iniciar Sesión" onClick={setCookie}></input>
                                 {isSubmitting ? (<p>Login your credentials...</p>): null}

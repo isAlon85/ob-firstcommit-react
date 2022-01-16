@@ -1,4 +1,6 @@
 import LoginPage from './pages/auth/LoginPage';
+import ForgotPage from './pages/auth/ForgotPage';
+import ResetPage from './pages/auth/ResetPage';
 import DashBoard from './pages/dashboard/DashBoard';
 import StudentPage from './pages/StudentPage';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path='' element={ loggedIn ? <Navigate replace to='/dashboard'/> : <Navigate replace to='/login'/>}/>
           <Route path='/login' element={<LoginPage/>}/>
+          <Route path='/forgot' element={<ForgotPage/>}/>
+          <Route path='/recover/:id' element={<ResetPage/>}/>
           {/*<Route path='/dashboard' element={ loggedIn ? <TablePage/> : <Navigate replace to='/login'/>}/>*/}
           <Route path='/dashboard' element={<DashBoard/>}/>
           <Route path='/student' element={<StudentPage/>}/>
