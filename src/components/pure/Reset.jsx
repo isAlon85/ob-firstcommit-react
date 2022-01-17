@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { recover } from '../../services/axiosService'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -8,13 +8,6 @@ const Reset = (props) => {
 
     let params = useParams();
     console.log(params)
-
-    useEffect(() => {
-        document.title = "OB Alumnos Reset";
-        return () => {
-            
-        }
-    },[])
 
     const history = useNavigate();
 

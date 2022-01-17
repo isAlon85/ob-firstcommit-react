@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { AuthContext } from "../../App.js";
 import { login } from '../../services/axiosService'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 const Axios = () => {
 
+    const history = useNavigate();
+
     useEffect(() => {
-        document.title = "OB Alumnos Login";
         getCookieData();
         document.getElementById('email').value = initialMail;
         document.getElementById('password').value = initialPassword;
-        return () => {
+        document.getElementById("checkboxid").defaultChecked = initialChecked;
+        if (authState.isAuthenticated) {
+            history('/dashboard');
+        }
+        return () => { 
             
         }
-    },[])
+    },)
+
+    const { dispatch } = React.useContext(AuthContext);
+    const { state: authState } = React.useContext(AuthContext);
 
     const [initialMail, setInitialMail] = useState('');
     const [initialPassword, setInitialPassword] = useState('');
@@ -22,7 +31,9 @@ const Axios = () => {
 
     var initialCredentials = {
         email: initialMail,
-        password: initialPassword
+        password: initialPassword,
+        isSubmitting: false,
+        errorMessage: null
     }
 
     const loginSchema = Yup.object().shape(
@@ -35,20 +46,27 @@ const Axios = () => {
         }
     );
 
+    const [data, setData] = useState(initialCredentials);
+
     const authUser = (values) => {
+        setData({
+            ...data,
+            isSubmitting: true,
+            errorMessage: null
+        });
         login(values.email, values.password)
             .then((response) => {
-                if(response.data.token){
-                    alert(JSON.stringify(response.data.token));
-                    sessionStorage.setItem('token', response.data.token)
-                }else{
-                    sessionStorage.removeItem('token');
-                    throw new Error('Login failure');
-                }
+                dispatch({
+                    type: "LOGIN",
+                    payload: response
+                })
             })
             .catch((error) => {
-                alert(`Something went wrong: ${error}`);
-                sessionStorage.removeItem('token');
+                setData({
+                    ...data,
+                    isSubmitting: false,
+                    errorMessage: 'Credenciales no válidas'
+                  });
             })
             .finally(() => console.log('Login done'))
     }
@@ -57,7 +75,6 @@ const Axios = () => {
         var mail = document.getElementById('email').value;
         var passwd = document.getElementById('password').value;
         var checkBox = document.getElementById("checkboxid");
-
         if (checkBox.checked === true) {
             document.cookie = "email=" + mail + "; max-age=" + 7 * 24 * 60 * 60;
             document.cookie = "pwd=" + passwd + "; max-age=" + 7 * 24 * 60 * 60;
@@ -67,17 +84,16 @@ const Axios = () => {
             document.cookie = "pwd=; max-age=0";
             document.cookie = "checked=; max-age=0";
         }
-
     }
 
     const getCookieData = () => {
-        console.log(document.cookie);
+        
         var mail = getCookie('email');
         var pwd = getCookie('pwd');
-        var checked = getCookie('pwd');
+        var checked = getCookie('checked');
         setInitialMail(mail);
         setInitialPassword(pwd);
-        setInitialChecked(checked);
+        if (checked === 'true') setInitialChecked(true);
     }
 
     const getCookie = (cname) => {
@@ -94,10 +110,6 @@ const Axios = () => {
             }
         }
         return "";
-    }
-
-    const changeChecked = () => {
-
     }
 
     return (
@@ -125,7 +137,7 @@ const Axios = () => {
                             <div className="form-frame">
                                 <div className="allfields-frame">
                                     <div className="field-frame">
-                                        <label htmlFor="email">Email</label>
+                                        <label htmlFor="email">Email </label>
                                         <Field id="email" type="email" name="email" placeholder="Introduce tu email"/>
                                         {/* Email Errors */}
                                         {errors.email && touched.email && 
@@ -146,14 +158,16 @@ const Axios = () => {
                                     </div>
                                 </div>
                                 <div className="remember-frame">
-                                    <input type="checkbox" id="checkboxid" className="checkbox" defaultChecked={ initialChecked }/>
+                                    <input type="checkbox" id="checkboxid" className="checkbox"/>
                                     <span id="remember-login">Recuérdame</span>
                                     <span id="forgotten"><Link to={'/forgot'} id="forgotten">He olvidado la contraseña</Link></span>
                                 </div>
                                 <input type="submit" value="Iniciar Sesión" onClick={setCookie}></input>
-                                {isSubmitting ? (<p>Login your credentials...</p>): null}
+                                {isSubmitting ? (<p>Login your credentials...</p>) : null}
                             </div>
+                            {data.errorMessage && (<span className="form-error">{data.errorMessage}</span>)}
                         </Form>
+                        
                 )}
             </Formik>
         </div>

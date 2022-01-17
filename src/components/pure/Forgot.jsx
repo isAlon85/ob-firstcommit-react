@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const Forgot = () => {
 
     useEffect(() => {
-        document.title = "OB Alumnos Forgot";
         return () => {
             
         }
@@ -42,7 +41,7 @@ const Forgot = () => {
             .catch((error) => {
                 alert(`Something went wrong: ${error}`);
             })
-            .finally(() => console.log('Login done'))
+            .finally(() => console.log('forgotPwd run'))
     }
 
 

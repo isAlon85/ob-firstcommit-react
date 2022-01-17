@@ -27,3 +27,12 @@ export const recover = (password, token) => {
 
     return axios.post('https://ob-firstcommit.herokuapp.com/api/auth/recover?token=' + token, body)
 }
+
+export const getUserByUsername = (username, token) => {
+
+    const headers = {
+        'Authorization': `Bearer ${token}`
+    }
+
+    return axios.get('https://ob-firstcommit.herokuapp.com/api/user?username=' + username, { headers: headers })
+}

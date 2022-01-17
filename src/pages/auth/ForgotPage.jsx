@@ -8,6 +8,7 @@ import Forgot from '../../components/pure/Forgot'
 function ForgotPage() {
 
     useEffect(() => {
+        document.title = "OB Alumnos Forgot";
         document.body.className='background-image-on';
         return () => {
             document.body.className='';

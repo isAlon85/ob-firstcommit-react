@@ -24,11 +24,11 @@ function DashBoard() {
     }
 
     const [students, setStudents] = useState([defaultStudent1, defaultStudent2, defaultStudent3, defaultStudent4, defaultStudent5, defaultStudent6, defaultStudent7]);
-
     const [loading, setLoading] = useState(true);
 
     //lifeCycle control
     useEffect(() => {
+        document.title = "OB Alumnos Dashboard";
         console.log('Student list has been modified');
         setLoading(false);
         return () => {

@@ -2,7 +2,6 @@ import React from 'react';
 import Logo from './Logo';
 import UserHeader from './UserHeader';
 
-
 function TableHeader() {
   return (
     <div className="header-frame-table">

@@ -8,6 +8,7 @@ import Reset from '../../components/pure/Reset'
 function ResetPage() {
 
     useEffect(() => {
+        document.title = "OB Alumnos Reset";
         document.body.className='background-image-on';
         return () => {
             document.body.className='';
