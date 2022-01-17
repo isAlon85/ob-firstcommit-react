@@ -223,7 +223,7 @@ function DashBoard() {
 
     return (
         <div>
-            <ModalDashboard></ModalDashboard>
+            <ModalDashboard getStudentsFunc={ () => getStudentsFunc }></ModalDashboard>
             <TableHeader></TableHeader>
             <div className="table-body-outer">
                 <div className="table-body-inner">
@@ -350,4 +350,4 @@ function DashBoard() {
     );
 }
 
-export default DashBoard;
+export default DashBoard

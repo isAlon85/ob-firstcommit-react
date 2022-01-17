@@ -21,7 +21,12 @@ function StudentPage( props ) {
                 <div className="student-form">
                     <div className="student-header">
                         <div className="picture-frame">
-                            <div className="cover" style={{ backgroundImage: `url(${state.picture.url})`}}>
+                            <div className="cover" 
+                                style={ state.picture ? 
+                                { backgroundImage: `url(${state.picture.url})`} 
+                                : 
+                                { backgroundImage: 'url(https://res.cloudinary.com/ialons85/image/upload/w_82,h_82/v1642443448/anonymous_alhvdv.jpg)'}}
+                            >
                             </div>
                         </div>
                         <div className="student-info-frame">
@@ -74,8 +79,8 @@ function StudentPage( props ) {
                             <div className="user-form-splitted">
                                 <p>Translado</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="select-user-form-splitted" name="combo">
-                                        <option value="1"defaultValue>No</option>
+                                    <select className="select-user-form-splitted" name="combo" defaultValue={ state.mobility ? "2" : "1" }>
+                                        <option value="1">No</option>
                                         <option value="2">Sí</option>
                                     </select>
                                 </form>
@@ -83,8 +88,8 @@ function StudentPage( props ) {
                             <div className="user-form-splitted">
                                 <p>Presencialidad</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="select-user-form-splitted" name="combo">
-                                        <option value="1"defaultValue>En remoto</option>
+                                    <select className="select-user-form-splitted" name="combo" defaultValue={ state.remote ? "1" : "2" }>
+                                        <option value="1">En remoto</option>
                                         <option value="2">Presencial</option>
                                     </select>
                                 </form>
@@ -139,7 +144,7 @@ function StudentPage( props ) {
                     </div>
                 </div>
             <div className="pdf-frame">
-                <iframe title="Resume" id="pdf-viewer" className="pdf-viewer" src={ state.resume.url } type="application/pdf" width="100%" height="100%"/>
+                <iframe title="Resume" id="pdf-viewer" className="pdf-viewer" src={ state.resume ? state.resume.url : '' } type="application/pdf" width="100%" height="100%"/>
             </div>
         </div>
       </div>        
