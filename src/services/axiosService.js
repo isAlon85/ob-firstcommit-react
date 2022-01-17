@@ -36,3 +36,12 @@ export const getUserByUsername = (username, token) => {
 
     return axios.get('https://ob-firstcommit.herokuapp.com/api/user?username=' + username, { headers: headers })
 }
+
+export const getStudents = (token) => {
+
+    const headers = {
+        'Authorization': `Bearer ${token}`
+    }
+
+    return axios.get('https://ob-firstcommit.herokuapp.com/api/students', { headers: headers })
+}

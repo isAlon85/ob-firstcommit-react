@@ -9,7 +9,7 @@ function StudentComponent({ student }) {
 
     const studentRoute = (e) => {
         e.preventDefault();
-        history('/student');
+        history('/student', { state: student });
     }
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function StudentComponent({ student }) {
     }, [student])
 
     return (
-        <tr className="student-table-row" onClick={studentRoute}>
+        <tr className="student-table-row" onClick={ studentRoute }>
             <td className="tabla1">{ student.name }</td>
             <td className="tabla2">{ student.location }</td>
             <td className="tabla2">{ student.country }</td>
@@ -28,12 +28,12 @@ function StudentComponent({ student }) {
             <td className="tabla2">{ student.email }</td>
             <td className="tabla2">
                 {(student.tags[0]!==undefined) ?  
-                    (<span key={0} className='tagitem2'>{ student.tags[0] }</span>) 
+                    (<span key={0} className='tagitem2'>{ student.tags[0].name }</span>) 
                     : 
                     null 
                 }
                 {(student.tags[1]!==undefined) ?  
-                    (<span key={1} className='tagitem2'>{ student.tags[1] }</span>) 
+                    (<span key={1} className='tagitem2'>{ student.tags[1].name }</span>) 
                     : 
                     null 
                 }

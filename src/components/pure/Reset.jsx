@@ -25,9 +25,11 @@ const Reset = (props) => {
     const loginSchema = Yup.object().shape(
         {
             password: Yup.string()
-                    .required('Password is required'),
+                    .required('Password is required')
+                    .min(8, "Must be 8 characters or more"),
             confPassword: Yup.string()
                     .required('Password is required')
+                    .min(8, "Must be 8 characters or more")
         }
     );
 

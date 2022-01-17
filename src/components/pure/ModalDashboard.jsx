@@ -24,38 +24,26 @@ function ModalDashboard() {
               <div className="modal-form-outer">
                 <div className="modal-user-form-big">
                   <p>Nombre y Apellidos</p>
-                  <input type="text" placeholder="Nombre Alumno"/>
+                  <input type="text" placeholder="Introduce nombre"/>
                 </div>
                 <div className="modal-user-form-split">
                   <div className="modal-user-form-splitted">
                     <p>Teléfono</p>
-                    <input type="text" placeholder="+34 666555222"/>
+                    <input type="text" placeholder="Introduce número"/>
                   </div>
                   <div className="modal-user-form-splitted">
                     <p>Email</p>
-                    <input type="text" placeholder="nalumno@ob.com"/>
+                    <input type="text" placeholder="Introduce email"/>
                   </div>
                 </div>
                 <div className="modal-user-form-split">
                   <div className="modal-user-form-splitted">
                     <p>País</p>
-                    <form name="formulario" method="post" action="">
-                        <select className="modal-select-user-form-splitted" name="combo">
-                            <option defaultValue>España</option>
-                            <option>Estados Unidos</option>
-                            <option>Francia</option>
-                        </select>
-                    </form>
+                    <input type="text" placeholder="Introduce país"/>
                   </div>
                   <div className="modal-user-form-splitted">
                     <p>Ciudad</p>
-                    <form name="formulario" method="post" action="">
-                        <select className="modal-select-user-form-splitted" name="combo">
-                            <option defaultValue>Valencia</option>
-                            <option>Madrid</option>
-                            <option>Barcelona</option>
-                        </select>
-                    </form>
+                    <input type="text" placeholder="Introduce ciudad"/>
                   </div>
                 </div>
                 <div className="modal-user-form-split">

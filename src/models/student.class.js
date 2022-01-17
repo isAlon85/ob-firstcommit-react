@@ -8,8 +8,8 @@ export class Student {
     mobility = false;
     remote = 0;
     user_id = 0;
-    picture = '';
-    resume = '';
+    picture = null;
+    resume = null;
     tags = [];
 
     constructor(id, name, email, phone, country, location, mobility, remote, user_id, picture, resume, tags){

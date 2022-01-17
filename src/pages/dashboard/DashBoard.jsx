@@ -1,40 +1,62 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect, useCallback }  from 'react';
 import '../../styles/dashboard.scss';
 import TableHeader from '../../components/pure/TableHeader';
 import ModalDashboard from '../../components/pure/ModalDashboard';
-import { useNavigate } from 'react-router-dom';
 import StudentListComponent from '../../components/StudentsList';
 import { Student } from '../../models/student.class';
-
-const defaultStudent1 = new Student(1, 'Miguel Indurain', 'mindurain@obcamp.com', '+34 666 555 669', 'España', 'Pamplona', true, 1, 1, '', '', ['HTML&CSS', 'REACT']);
-const defaultStudent2 = new Student(2, 'Perico Delgado', 'pdelgado@obcamp.com', '+34 666 555 668', 'España', 'Segovia', true, 0, 1, '', '', ['VUE', 'JAVASCRIPT', 'REACT']);
-const defaultStudent3 = new Student(3, 'Carlos Sastre', 'csastre@obcamp.com', '+34 666 555 667', 'España', 'Ávila', true, 0, 1, '', '', ['VUE', 'JAVASCRIPT', 'REACT', 'SPRING']);
-const defaultStudent4 = new Student(4, 'Alberto Contador', 'acontador@obcamp.com', '+34 666 555 666', 'España', 'Pinto', true, 1, 1, '', '', ['REACT']);
-const defaultStudent5 = new Student(5, 'Alejandro Valverde', 'avalverde@obcamp.com', '+34 666 555 665', 'España', 'Murcia', false, 0, 1, '', '', []);
-const defaultStudent6 = new Student(6, 'Joaquín Rodríguez', 'jrodriguez@obcamp.com', '+34 666 555 664', 'Andorra', 'Andorra la Vella', false, 0, 1, '', '', ['JAVASCRIPT', 'REACT']);
-const defaultStudent7 = new Student(7, 'Vincenzo Nibali', 'vnibali@obcamp.com', '+39 333 5555 444', 'Italia', 'Messina', true, 1, 1, '', '', ['SPRING', 'JAVA','HIBERNATE', 'HTML&CSS'])
+import { AuthContext } from "../../App.js";
+import { getStudents } from '../../services/axiosService'
 
 function DashBoard() {
 
-    const history = useNavigate();
+    const { state: authState } = React.useContext(AuthContext);
 
-    const student = (e) => {
-        e.preventDefault();
-        history('/student');
-    }
+    const [students, setStudents] = useState([]);
 
-    const [students, setStudents] = useState([defaultStudent1, defaultStudent2, defaultStudent3, defaultStudent4, defaultStudent5, defaultStudent6, defaultStudent7]);
-    const [loading, setLoading] = useState(true);
+    const getStudentsFunc = useCallback(() =>{
+        getStudents(authState.token)
+            .then((response) => {
+                const studentsFetched = [];
+                for(let i = 0; i < response.data.length; i++){
+                    const tagsFetched = [];
+                    if(response.data[i].tags) {
+                        for(let j = 0; j < response.data[i].tags.length; j++) {
+                            tagsFetched.push(response.data[i].tags[j]);
+                        }
+                    }
+                    const fetchedStudent = new Student(
+                        response.data[i].id, 
+                        response.data[i].name, 
+                        response.data[i].email, 
+                        response.data[i].phone, 
+                        response.data[i].country, 
+                        response.data[i].location, 
+                        response.data[i].mobility, 
+                        response.data[i].remote, 
+                        1, 
+                        response.data[i].picture ? response.data[i].picture : null, 
+                        response.data[i].resume ? response.data[i].resume : null, 
+                        tagsFetched
+                    );
+                    studentsFetched.push(fetchedStudent);
+                }
+                setStudents(studentsFetched);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => console.log('Students retrieved'))
+    },[authState.token])
 
     //lifeCycle control
     useEffect(() => {
         document.title = "OB Alumnos Dashboard";
         console.log('Student list has been modified');
-        setLoading(false);
+        getStudentsFunc();
         return () => {
             console.log('Student list component is going to unmount');
         }
-    }, [students])
+    }, [getStudentsFunc])
 
     function doSearch() {
         var tableReg = document.getElementById('myTable');

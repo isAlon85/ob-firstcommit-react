@@ -1,8 +1,11 @@
 import React from 'react';
 import '../styles/studentpage.scss';
 import StudentHeader from '../components/pure/StudentHeader';
+import { useLocation } from 'react-router-dom';
 
-function StudentPage() {
+function StudentPage( props ) {
+
+    const { state } = useLocation();
 
     function deleteTag(tag) {
         const myTag = document.getElementById(tag);
@@ -18,24 +21,24 @@ function StudentPage() {
                 <div className="student-form">
                     <div className="student-header">
                         <div className="picture-frame">
-                            <div className="cover">
+                            <div className="cover" style={{ backgroundImage: `url(${state.picture.url})`}}>
                             </div>
                         </div>
                         <div className="student-info-frame">
-                            <p>Nombre Alumno</p>
+                            <p>{ state.name }</p>
                             <div className="student-info-text">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-geo-alt" viewBox="0 0 16 16">
                                     <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>
                                 <div className="student-info-text">
-                                    Valencia
+                                    { state.location }
                                 </div>
                                 <div className="student-info-text">
                                     |
                                 </div>
                                 <div className="student-info-text">
-                                    España
+                                    { state.country }
                                 </div>
                             </div>
                         </div>
@@ -43,37 +46,27 @@ function StudentPage() {
                     <div className="student-info-frame-inner">
                         <div className="user-form-big">
                             <p>Nombre y Apellidos</p>
-                            <input type="text" placeholder="Nombre Alumno"/>
+                            <input type="text" placeholder={ state.name }/>
                         </div>
                         <div className="user-form-split">
                             <div className="user-form-splitted">
                                 <p>Teléfono</p>
-                                <input type="text" placeholder="+34 666555222"/>
+                                <input type="text" placeholder={ state.phone }/>
                             </div>
                             <div className="user-form-splitted">
                                 <p>Email</p>
-                                <input type="text" placeholder="nalumno@ob.com"/>
+                                <input type="text" placeholder={ state.email }/>
                             </div>
                         </div>
                         <div className="user-form-split">
                             <div className="user-form-splitted">
                                 <p>País</p>
-                                <form name="formulario" method="post" action="">
-                                    <select className="select-user-form-splitted" name="combo">
-                                        <option value="1"defaultValue>España</option>
-                                        <option value="2">Estados Unidos</option>
-                                        <option value="3">Francia</option>
-                                    </select>
-                                </form>
+                                <input type="text" placeholder={ state.country }/>
                             </div>
                             <div className="user-form-splitted">
                                 <p>Ciudad</p>
                                 <form name="formulario" method="post" action="">
-                                    <select className="select-user-form-splitted" name="combo">
-                                        <option value="1"defaultValue>Valencia</option>
-                                        <option value="2">Madrid</option>
-                                        <option value="3">Barcelona</option>
-                                    </select>
+                                <input type="text" placeholder={ state.location }/>
                                 </form>
                             </div>
                         </div>
@@ -146,7 +139,7 @@ function StudentPage() {
                     </div>
                 </div>
             <div className="pdf-frame">
-                <iframe title="Resume" id="pdf-viewer" className="pdf-viewer" src="" type="application/pdf" width="100%" height="100%"/>
+                <iframe title="Resume" id="pdf-viewer" className="pdf-viewer" src={ state.resume.url } type="application/pdf" width="100%" height="100%"/>
             </div>
         </div>
       </div>        
