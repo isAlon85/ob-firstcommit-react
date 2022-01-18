@@ -16,7 +16,6 @@ function StudentComponent({ state, token }) {
     const [location, setLocation] = useState('');
 
     const getStudentFunc = useCallback(() =>{
-        console.log(state)
         getStudent(state, token)
             .then((response) => {
                 const tagsFetched = [];
@@ -178,7 +177,6 @@ function StudentComponent({ state, token }) {
             // cache files.length
             var fl = files.length;
             var i = 0;
-        
             while ( i < fl) {
                 // localize file var in the loop
                 var file = files[i];
@@ -195,7 +193,6 @@ function StudentComponent({ state, token }) {
             // cache files.length
             var fl = files.length;
             var i = 0;
-        
             while ( i < fl) {
                 // localize file var in the loop
                 var file = files[i];
@@ -323,7 +320,15 @@ function StudentComponent({ state, token }) {
                                 </datalist>
                             </form>
                             <div className="tagitem-container" id="list">
-                                <GreyTag></GreyTag>
+                                { student ? student.tags ? student.tags.map((tag, index) => {
+                                    return (
+                                        <GreyTag 
+                                        key={index} 
+                                        tag={tag}
+                                        >
+                                        </GreyTag>
+                                    )
+                                    }) : null : null}
                             </div>
                         </div>
                     </div>

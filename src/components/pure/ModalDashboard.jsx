@@ -131,7 +131,7 @@ function ModalDashboard() {
                                     </label>
                                     <div className="model-upload-labels">
                                         <label>Archivos soportados: <span>.png, .jpg, y .jpeg</span></label>
-                                        <label>Tamaño de archivo máximo: <span>2 MB</span></label>
+                                        <label>Tamaño de archivo máximo: <span>1 MB</span></label>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@ function ModalDashboard() {
                                     </label>
                                     <div className="model-upload-labels">
                                         <label>Archivos soportados: <span>.pdf</span></label>
-                                        <label>Tamaño de archivo máximo: <span>20 MB</span></label>
+                                        <label>Tamaño de archivo máximo: <span>1 MB</span></label>
                                     </div>
                                 </div>
                             </div>
