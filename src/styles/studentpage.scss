@@ -619,6 +619,22 @@ color: $grey-black;
 	display: none;
 }
 
+.picture-selector {
+	display: none;
+}
+
+.cover:hover {
+	opacity: 0.8;
+}
+
+.cover:active {
+	opacity: 0.6;
+}
+
+.cover:focus {
+	outline: none;
+}
+
 .button_delete {
 	display: flex;
 	flex-direction: row;

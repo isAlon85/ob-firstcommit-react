@@ -41,6 +41,7 @@ function DashBoard() {
                     studentsFetched.push(fetchedStudent);
                 }
                 setStudents(studentsFetched);
+                console.log(studentsFetched);
             })
             .catch((error) => {
                 console.log(error);

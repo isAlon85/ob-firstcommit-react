@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { createStudent } from '../../services/axiosService'
 import { AuthContext } from "../../App.js";
 import { Student } from '../../models/student.class'
-import reactDom from 'react-dom';
 
 function ModalDashboard() {
 
@@ -28,10 +27,10 @@ function ModalDashboard() {
     const remote = document.getElementById('remote').value === 'En remoto' ? 1 : 0;
     const valueStudent = new Student(1, name, email, phone, country, location, mobility, remote, 1, null, null, null);
     setStudent(valueStudent);
-    createStudent(student, authState.token)
+    createStudent(valueStudent, authState.token)
         .then((response) => {
           console.log(response);
-          //window.location.reload(false);
+          window.location.reload(false);
         })
         .catch((error) => {
             console.log(error);
