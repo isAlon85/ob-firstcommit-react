@@ -5,7 +5,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate} from 'react-router-dom';
 
-const Axios = () => {
+const Login = () => {
 
     const history = useNavigate();
 
@@ -16,9 +16,6 @@ const Axios = () => {
         document.getElementById("checkboxid").defaultChecked = initialChecked;
         if (authState.isAuthenticated) {
             history('/dashboard');
-        }
-        return () => { 
-            
         }
     },)
 
@@ -87,7 +84,6 @@ const Axios = () => {
     }
 
     const getCookieData = () => {
-        
         var mail = getCookie('email');
         var pwd = getCookie('pwd');
         var checked = getCookie('checked');
@@ -126,7 +122,6 @@ const Axios = () => {
                 }}
             >
                 {/* We obtain props from Formik */}
-                
                 {({ values,
                     touched,
                     errors,
@@ -166,12 +161,11 @@ const Axios = () => {
                                 {isSubmitting ? (<p>Login your credentials...</p>) : null}
                             </div>
                             {data.errorMessage && (<span className="form-error">{data.errorMessage}</span>)}
-                        </Form>
-                        
+                        </Form>   
                 )}
             </Formik>
         </div>
     );
 }
 
-export default Axios;
+export default Login;

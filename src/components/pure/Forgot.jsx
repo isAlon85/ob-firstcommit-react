@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { forgot } from '../../services/axiosService'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -6,12 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Forgot = () => {
-
-    useEffect(() => {
-        return () => {
-            
-        }
-    },[])
 
     const history = useNavigate();
 

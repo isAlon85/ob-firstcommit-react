@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import '../../styles/loginpage.scss';
 import Logo from '../../components/pure/Logo';
 import Footer from '../../components/pure/Footer';
-import Axios from '../../components/pure/Axios'
+import Login from '../../components/pure/Login'
 
 function LoginPage() {
 
@@ -18,7 +18,7 @@ function LoginPage() {
     <div className="login-page">
         <div className="login-panel">
             <Logo></Logo>
-            <Axios></Axios>
+            <Login></Login>
         </div>
         <Footer></Footer>
     </div>

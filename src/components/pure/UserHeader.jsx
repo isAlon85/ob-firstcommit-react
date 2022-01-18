@@ -19,9 +19,6 @@ function UserHeader() {
 
     useEffect(() => {
         getUser();
-        return () => {
-
-        }
     }, [])
 
     const getUser = () => {

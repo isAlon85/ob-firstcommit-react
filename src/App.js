@@ -3,7 +3,7 @@ import LoginPage from './pages/auth/LoginPage';
 import ForgotPage from './pages/auth/ForgotPage';
 import ResetPage from './pages/auth/ResetPage';
 import DashBoard from './pages/dashboard/DashBoard';
-import StudentPage from './pages/StudentPage';
+import StudentPage from './pages/dashboard/StudentPage';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NotFoundPage from './pages/404/NotFoundPage';
 import './App.css';
