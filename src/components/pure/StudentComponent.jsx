@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { deletePicture, createPicture, updatePicture, deleteResume, updateResume, createResume, getStudent, updateStudent } from '../../services/axiosService'
 import { Student } from '../../models/student.class';
 import PropTypes from 'prop-types';
-import GreyTag from '../pure/GreyTag'
 
 function StudentComponent({ state, token }) {
 
@@ -164,7 +163,6 @@ function StudentComponent({ state, token }) {
         if (phone) { params.phone = phone }
         if (country) { params.country = country }
         if (location) { params.location = location }
-        console.log(params)
         if (event.keyCode === 13) {
             updateStudent(student.id, params, token)
             .then((responseUpd) => {
@@ -287,7 +285,7 @@ function StudentComponent({ state, token }) {
 				studentTags.push({id: 5, name: 'SPRING', description: 'Spring'});
 			break;
 			case "JAVA":
-                if (tagNames.includes( "Jave" )) checkDuplicated = true;
+                if (tagNames.includes( "JAVA" )) checkDuplicated = true;
 				studentTags.push({id: 6, name: 'Java', description: 'JAVA'});
 			break;
 			case "JAVASCRIPT":
@@ -299,6 +297,7 @@ function StudentComponent({ state, token }) {
 				studentTags.push({id: 8, name: 'HIBERNATE', description: 'Hibernate'});
 			break;
 			default:
+                checkDuplicated = true;
 		}
         if(checkDuplicated == false) {
             params.tags = studentTags;
