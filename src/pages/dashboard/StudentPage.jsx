@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { AuthContext } from "../../App.js";
 import StudentComponent from '../../components/pure/StudentComponent';
 
-function StudentPage({ props }) {
+function StudentPage() {
 
     const { state: authState } = React.useContext(AuthContext);
 

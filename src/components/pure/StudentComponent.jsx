@@ -9,11 +9,14 @@ function StudentComponent({ state, token }) {
     const [student, setStudent] = useState(null)
     const [picture, setPicture] = useState(null)
     const [resume, setResume] = useState(null)
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [country, setCountry] = useState('');
-    const [location, setLocation] = useState('');
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [phone, setPhone] = useState(null);
+    const [country, setCountry] = useState(null);
+    const [location, setLocation] = useState(null);
+    const [mobility, setMobility] = useState(null);
+    const [remote, setRemote] = useState(null);
+    const [tags, setTags] = useState(null);
 
     const getStudentFunc = useCallback(() =>{
         getStudent(state, token)
@@ -33,12 +36,18 @@ function StudentComponent({ state, token }) {
                     response.data.location, 
                     response.data.mobility, 
                     response.data.remote, 
-                    1, 
+                    response.data.user.id, 
                     response.data.picture ? response.data.picture : null, 
                     response.data.resume ? response.data.resume : null, 
                     tagsFetched
                 );
+            setMobility(response.data.mobility);
+            setRemote(response.data.remote);
+            response.data.picture ? setPicture(response.data.picture) : null;
+            response.data.picture ? setResume(response.data.picture) : null;
+            setTags(tagsFetched);
             setStudent(fetchedStudent);
+            console.log(fetchedStudent);
             })
             .catch((error) => {
                 console.log(error);
@@ -144,11 +153,11 @@ function StudentComponent({ state, token }) {
 
     const update = (event) => {
         const id = event.target.id;
-        id === 'name' ? setName(event.target.value) : setName(null);
-        id === 'email' ? setEmail(event.target.value) : setEmail(null);
-        id === 'phone' ? setPhone(event.target.value) : setPhone(null);
-        id === 'country' ? setCountry(event.target.value) : setCountry(null);
-        id === 'location' ? setLocation(event.target.value) : setLocation(null);
+        id === 'name' ? setName(event.target.value) : setName(name);
+        id === 'email' ? setEmail(event.target.value) : setEmail(email);
+        id === 'phone' ? setPhone(event.target.value) : setPhone(phone);
+        id === 'country' ? setCountry(event.target.value) : setCountry(country);
+        id === 'location' ? setLocation(event.target.value) : setLocation(location);
         const params = {}
         if (name) { params.name = name }
         if (email) { params.email = email }
@@ -168,6 +177,33 @@ function StudentComponent({ state, token }) {
                     getStudentFunc();
                 })
         }
+    }
+
+        const updateBinary = (event) => {
+        const id = event.target.id;
+        const params = {};
+        if(id === 'mobility'){
+            let mob = null;
+            event.target.value === 'true' ? mob = true : mob = false ;   
+            setMobility(mob);
+            params.mobility = mob;
+        }
+        if(id === 'remote'){
+            let rem = null;
+            event.target.value === '1' ? rem = 1 : rem = 0 ;  
+            setRemote(rem);
+            params.remote = rem;
+        }
+        updateStudent(student.id, params, token)
+            .then((responseUpd) => {
+                    console.log(responseUpd);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+                .finally(() => {
+                    getStudentFunc();
+                })
     }
 
     function readFile() {
@@ -200,6 +236,83 @@ function StudentComponent({ state, token }) {
             }
             resolve(file);
         });
+    }
+
+    const removeTags = indexToRemove => {
+        var studentTags = tags;
+        const params = {};
+        var actualTags = [...studentTags.filter((_, index) => index !== indexToRemove)]
+		setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+        params.tags = actualTags;
+        updateStudent(student.id, params, token)
+        .then((responseUpd) => {
+                console.log(responseUpd);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                getStudentFunc();
+            })
+	};
+
+    const addTag = (event) => {
+        var studentTags = tags;
+        const params = {};
+        var checkDuplicated = new Boolean(false);
+        var tagNames =[];
+        for (let i = 0; i < tags.length; i++) {
+            tagNames[i] = tags[i].name;
+        }
+        var compare = event.target.value.toUpperCase();
+		switch(compare) {
+			case "HTML&CSS":
+                if (tagNames.includes( "HTML&CSS" )) checkDuplicated = true;
+				studentTags.push({id: 1, name: 'HTML&CSS', description: 'HTML & CSS'});
+			break;
+			case "REACT":
+                if (tagNames.includes( "REACT" )) checkDuplicated = true;
+				studentTags.push({id: 2, name: 'REACT', description: 'React'});
+			break;
+			case "ANGULAR":
+                if (tagNames.includes( "ANGULAR" )) checkDuplicated = true;
+				studentTags.push({id: 3, name: 'ANGULAR', description: 'Angular'});
+			break;
+			case "VUE":
+                if (tagNames.includes( "VUE" )) checkDuplicated = true;
+				studentTags.push({id: 4, name: 'VUE', description: 'Vue'});
+			break;
+			case "SPRING":
+                if (tagNames.includes( "SPRING" )) checkDuplicated = true;
+				studentTags.push({id: 5, name: 'SPRING', description: 'Spring'});
+			break;
+			case "JAVA":
+                if (tagNames.includes( "Jave" )) checkDuplicated = true;
+				studentTags.push({id: 6, name: 'Java', description: 'JAVA'});
+			break;
+			case "JAVASCRIPT":
+                if (tagNames.includes( "JAVASCRIPT" )) checkDuplicated = true;
+				studentTags.push({id: 7, name: 'JAVASCRIPT', description: 'JavaScript'});
+			break;
+			case "HIBERNATE":
+                if (tagNames.includes( "HIBERNATE" )) checkDuplicated = true;
+				studentTags.push({id: 8, name: 'HIBERNATE', description: 'Hibernate'});
+			break;
+			default:
+		}
+        if(checkDuplicated == false) {
+            params.tags = studentTags;
+            updateStudent(student.id, params, token)
+            .then((responseUpd) => {
+                console.log(responseUpd);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                getStudentFunc();
+            })
+        }
     }
 
     return (
@@ -259,27 +372,25 @@ function StudentComponent({ state, token }) {
                             </div>
                             <div className="user-form-splitted">
                                 <p>Ciudad</p>
-                                <form name="formulario" method="post" action="">
                                 <input type="text" placeholder={ student ? student.location : null } id="location" onKeyUp={ update }/>
-                                </form>
                             </div>
                         </div>
                         <div className="user-form-split">
                             <div className="user-form-splitted">
                                 <p>Translado</p>
-                                <form name="formulario" method="post" action="">
-                                    <select className="select-user-form-splitted" name="combo" defaultValue={ student ? student.mobility ? "2" : "1" : null}>
-                                        <option value="1">No</option>
-                                        <option value="2">Sí</option>
+                                <form name="formulario">
+                                    <select className="select-user-form-splitted" id="mobility" value={ student ? student.mobility ? "true" : "false" : "false" } onChange={ updateBinary }>
+                                        <option value="false">No</option>
+                                        <option value="true">Sí</option>
                                     </select>
                                 </form>
                             </div>
                             <div className="user-form-splitted">
                                 <p>Presencialidad</p>
-                                <form name="formulario" method="post" action="">
-                                    <select className="select-user-form-splitted" name="combo" defaultValue={ student ? student.remote ? "1" : "2" : null}>
+                                <form name="formulario">
+                                    <select className="select-user-form-splitted" id="remote" value={ student ? student.remote ? "1" : "0" : "0" } onChange={ updateBinary }>
                                         <option value="1">En remoto</option>
-                                        <option value="2">Presencial</option>
+                                        <option value="0">Presencial</option>
                                     </select>
                                 </form>
                             </div>
@@ -306,8 +417,7 @@ function StudentComponent({ state, token }) {
                         </div>
                         <div className="user-form-bigger">
                             <p>Etiquetas</p>
-                            <form name="formulario" method="post" action="">
-                                <input type="text" id="tag" placeholder="Escribe para buscar...." list="items" />
+                                <input type="text" placeholder="Escribe para buscar...." list="items" onInput={ addTag }/>
                                 <datalist id="items">
                                     <option >HTML&CSS</option>
                                     <option >React</option>
@@ -318,17 +428,15 @@ function StudentComponent({ state, token }) {
                                     <option >JavaScript</option>
                                     <option >Hibernate</option>
                                 </datalist>
-                            </form>
                             <div className="tagitem-container" id="list">
-                                { student ? student.tags ? student.tags.map((tag, index) => {
-                                    return (
-                                        <GreyTag 
-                                        key={index} 
-                                        tag={tag}
-                                        >
-                                        </GreyTag>
-                                    )
-                                    }) : null : null}
+                            { student ? student.tags ? student.tags.map((tag, index) => {
+                                return (
+                                    <span className="tagitem" key={ index } id={ index }>{ tag.name }<svg onClick={ () => removeTags(index) } xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                    </span>
+                                )
+                            }) : null : null}
                             </div>
                         </div>
                     </div>

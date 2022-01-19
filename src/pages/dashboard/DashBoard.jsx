@@ -33,7 +33,7 @@ function DashBoard() {
                         response.data[i].location, 
                         response.data[i].mobility, 
                         response.data[i].remote, 
-                        1, 
+                        response.data[i].user.id, 
                         response.data[i].picture ? response.data[i].picture : null, 
                         response.data[i].resume ? response.data[i].resume : null, 
                         tagsFetched
