@@ -166,14 +166,14 @@ function StudentComponent({ state, token }) {
         if (event.keyCode === 13) {
             updateStudent(student.id, params, token)
             .then((responseUpd) => {
-                    console.log(responseUpd);
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-                .finally(() => {
-                    getStudentFunc();
-                })
+                console.log(responseUpd);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                getStudentFunc();
+            })
         }
     }
 
@@ -193,26 +193,24 @@ function StudentComponent({ state, token }) {
             params.remote = rem;
         }
         updateStudent(student.id, params, token)
-            .then((responseUpd) => {
-                    console.log(responseUpd);
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-                .finally(() => {
-                    getStudentFunc();
-                })
+        .then((responseUpd) => {
+            console.log(responseUpd);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            getStudentFunc();
+        })
     }
 
     function readFile() {
         return new Promise(resolve => {
             var fileInput = document.querySelector("#file-selector");
             var files = fileInput.files;
-            // cache files.length
             var fl = files.length;
             var i = 0;
             while ( i < fl) {
-                // localize file var in the loop
                 var file = files[i];
                 i++;
             }
@@ -224,11 +222,9 @@ function StudentComponent({ state, token }) {
         return new Promise(resolve => {
             var fileInput = document.querySelector("#resume-selector");
             var files = fileInput.files;
-            // cache files.length
             var fl = files.length;
             var i = 0;
             while ( i < fl) {
-                // localize file var in the loop
                 var file = files[i];
                 i++;
             }
@@ -244,14 +240,14 @@ function StudentComponent({ state, token }) {
         params.tags = actualTags;
         updateStudent(student.id, params, token)
         .then((responseUpd) => {
-                console.log(responseUpd);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                getStudentFunc();
-            })
+            console.log(responseUpd);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            getStudentFunc();
+        })
 	};
 
     const addTag = (event) => {

@@ -12,9 +12,10 @@ function DashBoard() {
     const { state: authState } = React.useContext(AuthContext);
 
     const [students, setStudents] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     const getStudentsFunc = useCallback(() =>{
-        getStudents(authState.token)
+        getStudents(null, null, authState.token)
             .then((response) => {
                 const studentsFetched = [];
                 for(let i = 0; i < response.data.length; i++){
@@ -41,6 +42,7 @@ function DashBoard() {
                     studentsFetched.push(fetchedStudent);
                 }
                 setStudents(studentsFetched);
+                setLoading(false);
                 console.log(studentsFetched);
             })
             .catch((error) => {
@@ -115,74 +117,63 @@ function DashBoard() {
         }
     }
 
-    function filterRemote() {
-        var tableReg = document.getElementById('myTable');
-        var checkBoxY = document.getElementById("remote-checkboxid");
-        var checkBoxN = document.getElementById("nonremote-checkboxid");
-        if (checkBoxY.checked === true && checkBoxN.checked === false){
-            for (let i = 0; i < students.length; i++) {
-                let remote = false;
-                if (students[i].remote === 1) remote = true;
-                if (remote) {
-                    tableReg.rows[i+1].style.display = '';
-                } else {
-                    tableReg.rows[i+1].style.display = 'none';
+    function filterStudents() {
+        setLoading(true);
+        var remote = null;
+        var mobility = null;
+        var remoteBoxY = document.getElementById("remote-checkboxid");
+        var remoteBoxN = document.getElementById("nonremote-checkboxid");
+        var mobilityBoxY = document.getElementById("mobility-checkboxid");
+        var mobilityBoxN = document.getElementById("nonmobility-checkboxid");
+        if(remoteBoxY.checked === true && remoteBoxN.checked === false){
+            remote = 1;
+        }
+        if(remoteBoxN.checked === true && remoteBoxY.checked === false){
+            remote = 0;
+        }
+        if(mobilityBoxY.checked === true && mobilityBoxN.checked === false){
+            mobility = true;
+        }
+        if(mobilityBoxN.checked === true && mobilityBoxY.checked === false){
+            mobility = false;
+        }
+        getStudents(remote, mobility, authState.token)
+        .then((response) => {
+            console.log(response)
+            const studentsFetched = [];
+        for(let i = 0; i < response.data.length; i++){
+            const tagsFetched = [];
+            if(response.data[i].tags) {
+                for(let j = 0; j < response.data[i].tags.length; j++) {
+                    tagsFetched.push(response.data[i].tags[j]);
                 }
             }
-        } else if (checkBoxN.checked === true && checkBoxY.checked === false){
-            for (let i = 0; i < students.length; i++) {
-                let remote = false;
-                if (students[i].remote === 0) remote = true;
-                if (remote) {
-                    tableReg.rows[i+1].style.display = '';
-                } else {
-                    tableReg.rows[i+1].style.display = 'none';
-                }
-            }
-        } else if (checkBoxN.checked === true && checkBoxY.checked === true){
-            for (let i = 0; i < students.length; i++) {
-                tableReg.rows[i+1].style.display = '';
-            }
-        } else {
-            for (let i = 0; i < students.length; i++) {
-                tableReg.rows[i+1].style.display = '';
-            }
-        }      
-    }
-
-    function filterMobility() {
-        var tableReg = document.getElementById('myTable');
-        var checkBoxY = document.getElementById("mobility-checkboxid");
-        var checkBoxN = document.getElementById("nonmobility-checkboxid");
-        if (checkBoxY.checked === true && checkBoxN.checked === false){
-            for (let i = 0; i < students.length; i++) {
-                let mobility = false;
-                if (students[i].mobility === true) mobility = true;
-                if (mobility) {
-                    tableReg.rows[i+1].style.display = '';
-                } else {
-                    tableReg.rows[i+1].style.display = 'none';
-                }
-            }
-        } else if (checkBoxN.checked === true && checkBoxY.checked === false){
-            for (let i = 0; i < students.length; i++) {
-                let mobility = false;
-                if (students[i].mobility === false) mobility = true;
-                if (mobility) {
-                    tableReg.rows[i+1].style.display = '';
-                } else {
-                    tableReg.rows[i+1].style.display = 'none';
-                }
-            }
-        } else if (checkBoxN.checked === true && checkBoxY.checked === true){
-            for (let i = 0; i < students.length; i++) {
-                tableReg.rows[i+1].style.display = '';
-            }
-        } else {
-            for (let i = 0; i < students.length; i++) {
-                tableReg.rows[i+1].style.display = '';
-            }
-        }      
+            const fetchedStudent = new Student(
+                response.data[i].id, 
+                response.data[i].name, 
+                response.data[i].email, 
+                response.data[i].phone, 
+                response.data[i].country, 
+                response.data[i].location, 
+                response.data[i].mobility, 
+                response.data[i].remote, 
+                response.data[i].user.id, 
+                response.data[i].picture ? response.data[i].picture : null, 
+                response.data[i].resume ? response.data[i].resume : null, 
+                tagsFetched
+            );
+            studentsFetched.push(fetchedStudent);
+        }
+        setStudents(studentsFetched);
+        setLoading(false);
+        console.log(studentsFetched);
+        console.log(response);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+        })
     }
 
     const countries = [''];
@@ -243,7 +234,8 @@ function DashBoard() {
                         </div>
                         <div className="table-outer-2">
                             <div className="table-inner">
-                                <StudentListComponent students={students}></StudentListComponent>
+                                <div className="loading-students" style={{ display: isLoading ? "flex" : "none" }}>Cargando Alumnos</div>
+                                {isLoading ? null : <StudentListComponent students={ students }></StudentListComponent>}
                             </div>
                         </div>
                     </div>
@@ -324,22 +316,22 @@ function DashBoard() {
                             <div className="remote-outer">
                                 <p className="label-bold">Presencial / a distancia</p>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="nonremote-checkboxid" className="checkbox" onClick={filterRemote}/>
+                                    <input type="checkbox" id="nonremote-checkboxid" className="checkbox" onClick={ filterStudents }/>
                                     <span id="remember">Presencial</span>
                                 </div>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="remote-checkboxid" className="checkbox" onClick={filterRemote}/>
+                                    <input type="checkbox" id="remote-checkboxid" className="checkbox" onClick={ filterStudents }/>
                                     <span id="remember">En remoto</span>
                                 </div>           
                             </div>
                             <div className="transfer-outer">
                                 <p className="label-bold">Posibilidad de translado</p>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="mobility-checkboxid" className="checkbox" onClick={filterMobility}/>
+                                    <input type="checkbox" id="mobility-checkboxid" className="checkbox" onClick={ filterStudents }/>
                                     <span id="remember">Sí</span>
                                 </div>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="nonmobility-checkboxid" className="checkbox" onClick={filterMobility}/>
+                                    <input type="checkbox" id="nonmobility-checkboxid" className="checkbox" onClick={ filterStudents }/>
                                     <span id="remember">No</span>
                                 </div>  
                             </div>

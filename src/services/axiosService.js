@@ -37,13 +37,44 @@ export const getUserByUsername = (username, token) => {
     return axios.get('https://ob-firstcommit.herokuapp.com/api/user?username=' + username, { headers: headers })
 }
 
-export const getStudents = (token) => {
+export const getStudents = (remote, mobility, token) => {
 
     const headers = {
         'Authorization': `Bearer ${token}`
     }
 
-    return axios.get('https://ob-firstcommit.herokuapp.com/api/students', { headers: headers })
+    /*if(remote === null && mobility !== null) {
+        return axios.get('https://ob-firstcommit.herokuapp.com/api/students?mobility=' + mobility, { headers: headers })
+    } else if (mobility === null && remote !== null) {
+        return axios.get('https://ob-firstcommit.herokuapp.com/api/students?remote=' + remote, { headers: headers })
+    } else if (mobility !== null && remote !== null) {
+        return axios.get('https://ob-firstcommit.herokuapp.com/api/students?remote=' + remote + '&mobility=' + mobility, { headers: headers })
+    } else {
+        return axios.get('https://ob-firstcommit.herokuapp.com/api/students', { headers: headers })
+    }*/
+
+    if(remote === null && mobility === null) {
+        return axios.get('https://ob-firstcommit.herokuapp.com/api/students', { headers: headers })
+    }
+    const remoteURL = remote!==null ? ('remote=' + remote) : '';
+    const mobilityURL = mobility!==null ? ('mobility=' + mobility) : '';
+    var urlArray = [remoteURL, mobilityURL];
+    var urlArrClean = urlArray.filter(Boolean);
+    var result = '';
+    for(let i = 0; i < urlArrClean.length; i++){
+        if(urlArrClean[i] !== ''){
+            if(i !== 0){
+                result = result + '&';
+            }
+            result = result + urlArrClean[i];
+        }
+    }
+    console.log(urlArray)
+    console.log(result)
+    return axios.get('https://ob-firstcommit.herokuapp.com/api/students?' 
+        + result, 
+        { headers: headers })
+        
 }
 
 export const createStudent = (student, token) => {

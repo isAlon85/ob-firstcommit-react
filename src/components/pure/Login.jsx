@@ -11,8 +11,6 @@ const Login = () => {
 
     useEffect(() => {
         getCookieData();
-        document.getElementById('email').value = initialMail;
-        document.getElementById('password').value = initialPassword;
         document.getElementById("checkboxid").defaultChecked = initialChecked;
         if (authState.isAuthenticated) {
             history('/dashboard');
@@ -22,13 +20,11 @@ const Login = () => {
     const { dispatch } = React.useContext(AuthContext);
     const { state: authState } = React.useContext(AuthContext);
 
-    const [initialMail, setInitialMail] = useState('');
-    const [initialPassword, setInitialPassword] = useState('');
     const [initialChecked, setInitialChecked] = useState(false);
 
     var initialCredentials = {
-        email: initialMail,
-        password: initialPassword,
+        email: '',
+        password: '',
         isSubmitting: false,
         errorMessage: null
     }
@@ -69,26 +65,16 @@ const Login = () => {
     }
 
     const setCookie = () => {
-        var mail = document.getElementById('email').value;
-        var passwd = document.getElementById('password').value;
         var checkBox = document.getElementById("checkboxid");
         if (checkBox.checked === true) {
-            document.cookie = "email=" + mail + "; max-age=" + 7 * 24 * 60 * 60;
-            document.cookie = "pwd=" + passwd + "; max-age=" + 7 * 24 * 60 * 60;
             document.cookie = "checked=true; max-age=" + 7 * 24 * 60 * 60;
         } else {
-            document.cookie = "email=; max-age=0";
-            document.cookie = "pwd=; max-age=0";
             document.cookie = "checked=; max-age=0";
         }
     }
 
     const getCookieData = () => {
-        var mail = getCookie('email');
-        var pwd = getCookie('pwd');
         var checked = getCookie('checked');
-        setInitialMail(mail);
-        setInitialPassword(pwd);
         if (checked === 'true') setInitialChecked(true);
     }
 
