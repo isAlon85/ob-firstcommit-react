@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { createStudent } from '../../services/axiosService'
 import { AuthContext } from "../../App.js";
 import { Student } from '../../models/student.class'
+import countryList from "../../json/countryList";
 
 function ModalDashboard() {
 
     const isVisible = "is-visible";
+    const countries = countryList;
 
     function closeModal() {
         document.getElementById('modal').classList.remove(isVisible);
@@ -19,12 +21,12 @@ function ModalDashboard() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [country, setCountry] = useState('');
     const [location, setLocation] = useState('');
 
     const createNewStudent = () => {
         const mobility = document.getElementById('mobility').value === 'Sí' ? true : false;
         const remote = document.getElementById('remote').value === 'En remoto' ? 1 : 0;
+        const country = document.getElementById('country').value;
         const valueStudent = new Student(1, name, email, phone, country, location, mobility, remote, 1, null, null, null);
         setStudent(valueStudent);
         createStudent(valueStudent, authState.token)
@@ -74,33 +76,40 @@ function ModalDashboard() {
                         <div className="modal-form-outer">
                             <div className="modal-user-form-big">
                                 <p>Nombre y Apellidos</p>
-                                <input type="text" placeholder="Introduce nombre" id="name" value={name} onChange={updateName}/>
+                                <input type="text" placeholder="Introduce nombre" id="name" value={name} onChange={ updateName }/>
                             </div>
                             <div className="modal-user-form-split">
                                 <div className="modal-user-form-splitted">
                                     <p>Teléfono</p>
-                                    <input type="text" placeholder="Introduce número" id="phone" value={phone} onChange={updatePhone}/>
+                                    <input type="text" placeholder="Introduce número" id="phone" value={phone} onChange={ updatePhone }/>
                                 </div>
                                 <div className="modal-user-form-splitted">
                                     <p>Email</p>
-                                    <input type="text" placeholder="Introduce email" id="email" value={email} onChange={updateEmail}/>
+                                    <input type="text" placeholder="Introduce email" id="email" value={email} onChange={ updateEmail }/>
                                 </div>
                             </div>
                             <div className="modal-user-form-split">
                                 <div className="modal-user-form-splitted">
                                     <p>País</p>
-                                    <input type="text" placeholder="Introduce país" id="country" value={country} onChange={updateCountry}/>
+                                    <form name="formulario">
+                                    <select className="select-user-form-splitted" id="country" defaultValue="España">
+                                        { countries ? countries.map((country, index) => {
+                                        return (
+                                            <option key={ index } value={ country }>{ country }</option>
+                                        )}) : null }
+                                    </select>
+                                </form>
                                 </div>
                                 <div className="modal-user-form-splitted">
                                     <p>Ciudad</p>
-                                    <input type="text" placeholder="Introduce ciudad" id="location" value={location} onChange={updateLocation}/>
+                                    <input type="text" placeholder="Introduce ciudad" id="location" value={location} onChange={ updateLocation }/>
                                 </div>
                             </div>
                             <div className="modal-user-form-split">
                                 <div className="modal-user-form-splitted">
                                     <p>Translado</p>
                                     <form name="formulario" method="post" action="">
-                                        <select className="modal-select-user-form-splitted" name="combo" id="mobility">
+                                        <select className="modal-select-user-form-splitted" id="mobility">
                                             <option defaultValue>No</option>
                                             <option>Sí</option>
                                         </select>
@@ -109,7 +118,7 @@ function ModalDashboard() {
                                 <div className="modal-user-form-splitted">
                                     <p>Presencialidad</p>
                                     <form name="formulario" method="post" action="">
-                                        <select className="modal-select-user-form-splitted" name="combo" id="remote">
+                                        <select className="modal-select-user-form-splitted" id="remote">
                                             <option defaultValue>En remoto</option>
                                             <option>Presencial</option>
                                         </select>
@@ -173,13 +182,13 @@ function ModalDashboard() {
                 </section>
                 <footer className="modal-footer">
                     <button type="submit"
-                    className={ name && email && phone && country && location
+                    className={ name && email && phone && location
                     ? "modal-save-button-active"
                     : "modal-save-button"
                     }
-                    {...(name && email && phone && country && location 
+                    {...(name && email && phone && location 
                     ? { onClick
-                    : () => {createNewStudent()}} : {})
+                    : () => { createNewStudent() }} : {})
                     }
                     >Guardar</button>
                     <button type="button" className="modal-cancel-button">Cancelar</button>

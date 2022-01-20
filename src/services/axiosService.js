@@ -37,28 +37,20 @@ export const getUserByUsername = (username, token) => {
     return axios.get('https://ob-firstcommit.herokuapp.com/api/user?username=' + username, { headers: headers })
 }
 
-export const getStudents = (remote, mobility, token) => {
+export const getStudents = (country, location, remote, mobility, token) => {
 
     const headers = {
         'Authorization': `Bearer ${token}`
     }
 
-    /*if(remote === null && mobility !== null) {
-        return axios.get('https://ob-firstcommit.herokuapp.com/api/students?mobility=' + mobility, { headers: headers })
-    } else if (mobility === null && remote !== null) {
-        return axios.get('https://ob-firstcommit.herokuapp.com/api/students?remote=' + remote, { headers: headers })
-    } else if (mobility !== null && remote !== null) {
-        return axios.get('https://ob-firstcommit.herokuapp.com/api/students?remote=' + remote + '&mobility=' + mobility, { headers: headers })
-    } else {
-        return axios.get('https://ob-firstcommit.herokuapp.com/api/students', { headers: headers })
-    }*/
-
-    if(remote === null && mobility === null) {
+    if(country === null && location === null && remote === null && mobility === null) {
         return axios.get('https://ob-firstcommit.herokuapp.com/api/students', { headers: headers })
     }
+    const countryURL = country!==null ? ('country=' + country) : '';
+    const locationURL = location!==null ? ('location=' + location) : '';
     const remoteURL = remote!==null ? ('remote=' + remote) : '';
     const mobilityURL = mobility!==null ? ('mobility=' + mobility) : '';
-    var urlArray = [remoteURL, mobilityURL];
+    var urlArray = [countryURL, locationURL, remoteURL, mobilityURL];
     var urlArrClean = urlArray.filter(Boolean);
     var result = '';
     for(let i = 0; i < urlArrClean.length; i++){

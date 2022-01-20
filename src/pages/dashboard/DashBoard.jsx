@@ -13,9 +13,11 @@ function DashBoard() {
 
     const [students, setStudents] = useState([]);
     const [isLoading, setLoading] = useState(true);
+    const [country, setCountry] = useState(null);
+    const [location, setLocation] = useState(null);
 
     const getStudentsFunc = useCallback(() =>{
-        getStudents(null, null, authState.token)
+        getStudents(null, null, null, null, authState.token)
             .then((response) => {
                 const studentsFetched = [];
                 for(let i = 0; i < response.data.length; i++){
@@ -42,13 +44,15 @@ function DashBoard() {
                     studentsFetched.push(fetchedStudent);
                 }
                 setStudents(studentsFetched);
-                setLoading(false);
                 console.log(studentsFetched);
             })
             .catch((error) => {
                 console.log(error);
             })
-            .finally(() => console.log('Students retrieved'))
+            .finally(() => {
+                console.log('Students retrieved');
+                setLoading(false);
+            })
     },[authState.token])
 
     //lifeCycle control
@@ -80,64 +84,36 @@ function DashBoard() {
             }
         }
     }
-
-    function doSearchLocation() {
-        var tableReg = document.getElementById('myTable');
-        var searchText = document.getElementById('select-location').value.toLowerCase();
-        for (let i = 1; i < tableReg.rows.length; i++) {
-            var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-            var found = false;
-            var compareWith = cellsOfRow[1].innerHTML.toLowerCase();
-            if (searchText.length === 0 || (compareWith.indexOf(searchText) > -1)) {
-                found = true;
-            }
-            if (found) {
-                tableReg.rows[i].style.display = '';
-            } else {
-                tableReg.rows[i].style.display = 'none';
-            }
-        }
-    }
-
-    function doSearchCountry() {
-        var tableReg = document.getElementById('myTable');
-        var searchText = document.getElementById('select-country').value.toLowerCase();
-        for (let i = 1; i < tableReg.rows.length; i++) {
-            var cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
-            var found = false;
-            var compareWith = cellsOfRow[2].innerHTML.toLowerCase();
-            if (searchText.length === 0 || (compareWith.indexOf(searchText) > -1)) {
-                found = true;
-            }
-            if (found) {
-                tableReg.rows[i].style.display = '';
-            } else {
-                tableReg.rows[i].style.display = 'none';
-            }
-        }
-    }
-
-    function filterStudents() {
+    function filterStudents(event) {
         setLoading(true);
-        var remote = null;
-        var mobility = null;
+        const id = event.target.id;
+        var countryFilter = country;
+        var locationFilter = location;
+        var remoteFilter = null;
+        var mobilityFilter = null;
+        id === 'select-country' ? countryFilter = event.target.value : countryFilter = countryFilter;
+        if(countryFilter === '') {countryFilter = null;}
+        setCountry(countryFilter);
+        id === 'select-location' ? locationFilter = event.target.value : locationFilter = locationFilter;
+        if(locationFilter === '') {locationFilter = null;}
+        setLocation(locationFilter);
         var remoteBoxY = document.getElementById("remote-checkboxid");
         var remoteBoxN = document.getElementById("nonremote-checkboxid");
         var mobilityBoxY = document.getElementById("mobility-checkboxid");
         var mobilityBoxN = document.getElementById("nonmobility-checkboxid");
         if(remoteBoxY.checked === true && remoteBoxN.checked === false){
-            remote = 1;
+            remoteFilter = 1;
         }
         if(remoteBoxN.checked === true && remoteBoxY.checked === false){
-            remote = 0;
+            remoteFilter = 0;
         }
         if(mobilityBoxY.checked === true && mobilityBoxN.checked === false){
-            mobility = true;
+            mobilityFilter = true;
         }
         if(mobilityBoxN.checked === true && mobilityBoxY.checked === false){
-            mobility = false;
+            mobilityFilter = false;
         }
-        getStudents(remote, mobility, authState.token)
+        getStudents(countryFilter, locationFilter, remoteFilter, mobilityFilter, authState.token)
         .then((response) => {
             console.log(response)
             const studentsFetched = [];
@@ -165,14 +141,15 @@ function DashBoard() {
             studentsFetched.push(fetchedStudent);
         }
         setStudents(studentsFetched);
-        setLoading(false);
         console.log(studentsFetched);
         console.log(response);
         })
         .catch((error) => {
             console.log(error);
+            setStudents([]);
         })
         .finally(() => {
+            setLoading(false);
         })
     }
 
@@ -283,7 +260,7 @@ function DashBoard() {
                                 <div className="labels-inner">
                                     <p className="label-bold">País</p>
                                     <form name="formulario" method="post" action="">
-                                        <select id="select-country" className="select-frame" name="combo" onChange={doSearchCountry}>
+                                        <select id="select-country" className="select-frame" value={ country ? country : '' } onChange={ filterStudents }>
                                             { countriesFiltered.map((country, index) => {
                                                 return (
                                                     <option 
@@ -300,7 +277,7 @@ function DashBoard() {
                                 <div className="labels-inner">
                                     <p className="label-bold">Ciudad</p>
                                     <form name="formulario" method="post" action="">
-                                        <select id="select-location" className="select-frame" name="combo" onChange={doSearchLocation}>
+                                        <select id="select-location" className="select-frame" value={ location ? location : '' } onChange={ filterStudents }>
                                         { locationsFiltered.map((location, index) => {
                                                 return (
                                                     <option 

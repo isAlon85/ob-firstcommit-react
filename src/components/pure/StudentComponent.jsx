@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { deletePicture, createPicture, updatePicture, deleteResume, updateResume, createResume, getStudent, updateStudent } from '../../services/axiosService'
 import { Student } from '../../models/student.class';
 import PropTypes from 'prop-types';
+import countryList from "../../json/countryList";
 
 function StudentComponent({ state, token }) {
 
@@ -16,6 +17,8 @@ function StudentComponent({ state, token }) {
     const [mobility, setMobility] = useState(null);
     const [remote, setRemote] = useState(null);
     const [tags, setTags] = useState(null);
+    
+    const countries = countryList;
 
     const getStudentFunc = useCallback(() =>{
         getStudent(state, token)
@@ -155,13 +158,11 @@ function StudentComponent({ state, token }) {
         id === 'name' ? setName(event.target.value) : setName(name);
         id === 'email' ? setEmail(event.target.value) : setEmail(email);
         id === 'phone' ? setPhone(event.target.value) : setPhone(phone);
-        id === 'country' ? setCountry(event.target.value) : setCountry(country);
         id === 'location' ? setLocation(event.target.value) : setLocation(location);
         const params = {}
         if (name) { params.name = name }
         if (email) { params.email = email }
         if (phone) { params.phone = phone }
-        if (country) { params.country = country }
         if (location) { params.location = location }
         if (event.keyCode === 13) {
             updateStudent(student.id, params, token)
@@ -191,6 +192,12 @@ function StudentComponent({ state, token }) {
             event.target.value === '1' ? rem = 1 : rem = 0 ;  
             setRemote(rem);
             params.remote = rem;
+        }
+        if(id === 'country'){
+            let coun = null;
+            coun = event.target.value;  
+            setCountry(coun);
+            params.country = coun;
         }
         updateStudent(student.id, params, token)
         .then((responseUpd) => {
@@ -363,7 +370,14 @@ function StudentComponent({ state, token }) {
                         <div className="user-form-split">
                             <div className="user-form-splitted">
                                 <p>País</p>
-                                <input type="text" placeholder={ student ? student.country : null } id="country" onKeyUp={ update }/>
+                                <form name="formulario">
+                                    <select className="select-user-form-splitted" id="country" value={ student ? student.country ? student.country : "España" : "España" } onChange={ updateBinary }>
+                                        { countries ? countries.map((country, index) => {
+                                        return (
+                                            <option key={ index } value={ country }>{ country }</option>
+                                        )}) : null }
+                                    </select>
+                                </form>
                             </div>
                             <div className="user-form-splitted">
                                 <p>Ciudad</p>
