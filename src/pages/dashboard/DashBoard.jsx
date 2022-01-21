@@ -15,6 +15,7 @@ function DashBoard() {
     const [isLoading, setLoading] = useState(true);
     const [country, setCountry] = useState(null);
     const [location, setLocation] = useState(null);
+    const [tags, setTags] = useState([]);
 
     const getStudentsFunc = useCallback(() =>{
         getStudents(null, null, null, null, authState.token)
@@ -190,6 +191,66 @@ function DashBoard() {
         }
     });
 
+    const removeTags = indexToRemove => {
+		setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+	};
+
+    const addTag = (event) => {
+        if(tags.length < 5) {
+            var newElement = null;
+            var checkDuplicated;
+            var tagNames =[];
+            for (let i = 0; i < tags.length; i++) {
+                tagNames[i] = tags[i].name;
+            }
+            var compare = event.target.value.toUpperCase();
+            switch(compare) {
+                case "HTML&CSS":
+                    tagNames.includes( "HTML&CSS" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 1, name: 'HTML&CSS', description: 'HTML & CSS'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "REACT":
+                    tagNames.includes( "REACT" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 2, name: 'REACT', description: 'React'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "ANGULAR":
+                    tagNames.includes( "ANGULAR" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 3, name: 'ANGULAR', description: 'Angular'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "VUE":
+                    tagNames.includes( "VUE" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 4, name: 'VUE', description: 'Vue'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "SPRING":
+                    tagNames.includes( "SPRING" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 5, name: 'SPRING', description: 'Spring'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "JAVA":
+                    tagNames.includes( "JAVA" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 6, name: 'Java', description: 'JAVA'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "JAVASCRIPT":
+                    tagNames.includes( "JAVASCRIPT" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 7, name: 'JAVASCRIPT', description: 'JavaScript'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                case "HIBERNATE":
+                    tagNames.includes( "HIBERNATE" ) ? checkDuplicated = true : checkDuplicated = false;
+                    newElement = {id: 8, name: 'HIBERNATE', description: 'Hibernate'};
+                    checkDuplicated ? null : setTags([...tags, newElement]);
+                break;
+                default:
+            }
+        }
+    }
+
+
     return (
         <div>
             <ModalDashboard getStudentsFunc={ () => getStudentsFunc }></ModalDashboard>
@@ -229,31 +290,28 @@ function DashBoard() {
                                 <div className="labels-inner">
                                     <p className="label-bold">Etiquetas</p>
                                     <form name="formulario" method="post" action="">
-                                        <input type="text" placeholder="Escribe para buscar...." list="items" />
+                                        <input type="text" placeholder="Escribe para buscar...." list="items" onInput={ addTag }/>
                                         <datalist id="items">
-                                            <option>HTML&CSS</option>
-                                            <option>React</option>
-                                            <option>Angular</option>
+                                            <option >HTML&CSS</option>
+                                            <option >React</option>
+                                            <option >Angular</option>
+                                            <option >Vue</option>
+                                            <option >Spring</option>
+                                            <option >Java</option>
+                                            <option >JavaScript</option>
+                                            <option >Hibernate</option>
                                         </datalist>
-                                        </form>
+                                    </form>
                                 </div>
-                                <div className="label-icons-frame">
-                                    <div className="label-icons-frame-first">
-                                        <span className="tagitem">HTML&CSS<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
-                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                <div className="label-icons-frame" id="list">
+                                    { tags ? tags.map((tag, index) => {
+                                        return (
+                                            <span className="tagitem" key={ index } id={ index }>{ tag.name }<svg onClick={ () => removeTags(index) } xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                                             </svg>
-                                        </span>
-                                        <span className="tagitem">REACT<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
-                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                            </svg>
-                                        </span>
-                                    </div>                        
-                                    <div className="label-icons-frame-second">
-                                        <span className="tagitem">ANGULAR<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
-                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                            </svg>
-                                        </span>
-                                    </div>
+                                            </span>
+                                        )
+                                    }) : null}
                                 </div>
                             </div>
                             <div className="country-outer">

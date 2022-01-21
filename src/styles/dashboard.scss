@@ -493,7 +493,7 @@ table {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 28px 24px 24px;
+	padding: 27px 24px 24px;
 	position: static;
 	width: 330px;
 	height: 647px;
@@ -591,7 +591,7 @@ table {
 	align-self: stretch;
 	flex-grow: 0;
 	margin: 0px;
-	margin-bottom: 12px;
+	margin-bottom: 15px;
 }
 
 .label-bold {
@@ -669,7 +669,8 @@ table {
 
 .label-icons-frame {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: flex-start;
 	padding: 0px;
 	position: static;
@@ -677,39 +678,6 @@ table {
 	height: 55px;
 	left: 0px;
 	top: 83px;
-	flex: none;
-	align-self: stretch;
-	flex-grow: 0;
-	margin: 0px;
-}
-
-.label-icons-frame-first {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	padding: 0px;
-	position: static;
-	width: 282px;
-	height: 24px;
-	left: 0px;
-	top: 0px;
-	flex: none;
-	align-self: stretch;
-	flex-grow: 0;
-	margin: 0px;
-	margin-bottom: 7px;
-}
-
-.label-icons-frame-second {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	padding: 0px;
-	position: static;
-	width: 282px;
-	height: 24px;
-	left: 0px;
-	top: 31px;
 	flex: none;
 	align-self: stretch;
 	flex-grow: 0;

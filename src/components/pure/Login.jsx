@@ -49,6 +49,8 @@ const Login = () => {
         });
         login(values.email, values.password)
             .then((response) => {
+                var checkBox = document.getElementById("checkboxid")
+                response.checked = checkBox.checked;
                 dispatch({
                     type: "LOGIN",
                     payload: response
@@ -69,6 +71,8 @@ const Login = () => {
         if (checkBox.checked === true) {
             document.cookie = "checked=true; max-age=" + 7 * 24 * 60 * 60;
         } else {
+            localStorage.removeItem("username");
+            localStorage.removeItem("token");
             document.cookie = "checked=; max-age=0";
         }
     }
@@ -143,7 +147,7 @@ const Login = () => {
                                     <span id="remember-login">Recuérdame</span>
                                     <span id="forgotten"><Link to={'/forgot'} id="forgotten">He olvidado la contraseña</Link></span>
                                 </div>
-                                <input type="submit" value="Iniciar Sesión" onClick={setCookie}></input>
+                                <input type="submit" value="Iniciar Sesión" onClick={ setCookie }></input>
                                 {isSubmitting ? (<p>Login your credentials...</p>) : null}
                             </div>
                             {data.errorMessage && (<span className="form-error">{data.errorMessage}</span>)}

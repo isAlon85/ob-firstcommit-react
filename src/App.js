@@ -18,8 +18,13 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      localStorage.setItem("username", JSON.stringify(action.payload.data.username));
-      localStorage.setItem("token", JSON.stringify(action.payload.data.token));
+      if(action.payload.checked){
+        localStorage.setItem("username", JSON.stringify(action.payload.data.username));
+        localStorage.setItem("token", JSON.stringify(action.payload.data.token));
+      } else {
+        sessionStorage.setItem("username", JSON.stringify(action.payload.data.username));
+        sessionStorage.setItem("token", JSON.stringify(action.payload.data.token));
+      }
       return {
         ...state,
         isAuthenticated: true,
@@ -28,6 +33,7 @@ const reducer = (state, action) => {
       };
     case "LOGOUT":
       localStorage.clear();
+      sessionStorage.clear();
       return {
         ...state,
         isAuthenticated: false,
