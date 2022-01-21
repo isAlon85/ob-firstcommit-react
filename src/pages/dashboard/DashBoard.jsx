@@ -12,6 +12,7 @@ function DashBoard() {
     const { state: authState } = React.useContext(AuthContext);
 
     const [students, setStudents] = useState([]);
+    const [hiddenStudents, setHiddenStudents] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [country, setCountry] = useState(null);
     const [location, setLocation] = useState(null);
@@ -197,6 +198,7 @@ function DashBoard() {
 
     const removeTags = indexToRemove => {
 		setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+        filterTags(null, indexToRemove);
 	};
 
     const addTag = (event) => {
@@ -214,46 +216,82 @@ function DashBoard() {
                     tagNames.includes( "HTML&CSS" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 1, name: 'HTML&CSS', description: 'HTML & CSS'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "REACT":
                     tagNames.includes( "REACT" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 2, name: 'REACT', description: 'React'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "ANGULAR":
                     tagNames.includes( "ANGULAR" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 3, name: 'ANGULAR', description: 'Angular'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "VUE":
                     tagNames.includes( "VUE" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 4, name: 'VUE', description: 'Vue'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "SPRING":
                     tagNames.includes( "SPRING" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 5, name: 'SPRING', description: 'Spring'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "JAVA":
                     tagNames.includes( "JAVA" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 6, name: 'Java', description: 'JAVA'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "JAVASCRIPT":
                     tagNames.includes( "JAVASCRIPT" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 7, name: 'JAVASCRIPT', description: 'JavaScript'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 case "HIBERNATE":
                     tagNames.includes( "HIBERNATE" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 8, name: 'HIBERNATE', description: 'Hibernate'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
+                    filterTags(newElement, null);
                 break;
                 default:
             }
         }
     }
+
+    const filterTags = (newElement, indexToRemove) => {
+        var studentsArray = students;
+        var tagsToFilter = tags;
+        tagsToFilter.push(newElement);
+        tagsToFilter = [...tagsToFilter.filter((_, index) => index !== indexToRemove)]
+        tagsToFilter = tagsToFilter.filter(Boolean);
+        if(tagsToFilter.length === 0) {
+            studentsArray = [];
+        } else {
+            for(let i = students.length - 1; i >= 0; i--){
+                var counter = 0;
+                for(let j = 0; j < students[i].tags.length; j++){
+                    for(let k = 0; k < tagsToFilter.length; k++)
+                    if(students[i].tags[j].id === tagsToFilter[k].id){
+                        counter++;
+                        if(counter === tagsToFilter.length) {
+                            studentsArray = [...studentsArray.filter((_, index) => index !== i)];
+                        }
+                    }
+                }
+            }
+        }
+        const studentsFiltered = studentsArray.filter((valor, index) => {
+            return studentsArray.indexOf(valor) === index;
+        });
+        setHiddenStudents(studentsFiltered);
+	};
 
     const deleteAll = () => {
 		setTags([]);
@@ -265,7 +303,6 @@ function DashBoard() {
         setMobilityCheck(false);
         setNoMobilityCheck(false);
 	};
-
 
     return (
         <div>
@@ -289,7 +326,7 @@ function DashBoard() {
                         <div className="table-outer-2">
                             <div className="table-inner">
                                 <div className="loading-students" style={{ display: isLoading ? "flex" : "none" }}>Cargando Alumnos</div>
-                                {isLoading ? null : <StudentListComponent students={ students }></StudentListComponent>}
+                                {isLoading ? null : <StudentListComponent students={ students } hiddenStudents= { hiddenStudents }></StudentListComponent>}
                             </div>
                         </div>
                     </div>

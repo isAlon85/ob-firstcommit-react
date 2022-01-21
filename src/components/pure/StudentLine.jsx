@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Student } from '../../models/student.class'
 import { useNavigate } from 'react-router-dom';
 
-function StudentLine({ student }) {
+function StudentLine({ student, hiddenStudents }) {
 
     const history = useNavigate();
 
@@ -20,7 +20,7 @@ function StudentLine({ student }) {
     }, [student])
 
     return (
-        <tr className="student-table-row" onClick={ studentRoute }>
+        <tr className="student-table-row" onClick={ studentRoute } style={{ display: hiddenStudents.includes(student) ? "none" : "" }}>
             <td className="tabla1">{ student.name }</td>
             <td className="tabla2">{ student.location }</td>
             <td className="tabla2">{ student.country }</td>
@@ -49,6 +49,7 @@ function StudentLine({ student }) {
 
 StudentLine.propTypes = {
     student: PropTypes.instanceOf(Student).isRequired,
+    hiddenStudents: PropTypes.array
 };
 
 export default StudentLine

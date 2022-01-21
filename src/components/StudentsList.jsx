@@ -4,7 +4,7 @@ import StudentLine from './pure/StudentLine';
 
 
 // eslint-disable-next-line react/prop-types
-function StudentListComponent({ students }) {
+function StudentListComponent({ students, hiddenStudents }) {
 
     function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -71,6 +71,7 @@ function StudentListComponent({ students }) {
                 <StudentLine 
                 key={index} 
                 student={student}
+                hiddenStudents={ hiddenStudents }
                 >
                 </StudentLine>
             )
