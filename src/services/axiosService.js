@@ -75,15 +75,72 @@ export const createStudent = (student, token) => {
         'Authorization': `Bearer ${token}`
     }
 
-    let body = {
-        name: student.name,
-        email: student.email,
-        phone: student.phone,
-        country: student.country,
-        location: student.location,
-        mobility: student.mobility,
-        remote: student.remote
+    if (!student.picture && !student.resume){
+        var body = {
+            name: student.name,
+            email: student.email,
+            phone: student.phone,
+            country: student.country,
+            location: student.location,
+            mobility: student.mobility,
+            remote: student.remote
+        }
     }
+    if (student.picture && !student.resume){
+        var body = {
+            name: student.name,
+            email: student.email,
+            phone: student.phone,
+            country: student.country,
+            location: student.location,
+            mobility: student.mobility,
+            remote: student.remote,
+            picture: {
+                id: student.picture.id,
+                url: student.picture.url,
+                cloudinaryId: student.picture.cloudinaryId
+                }
+        }
+    }
+    if (student.picture && student.resume){
+        var body = {
+            name: student.name,
+            email: student.email,
+            phone: student.phone,
+            country: student.country,
+            location: student.location,
+            mobility: student.mobility,
+            remote: student.remote,
+            picture: {
+                id: student.picture.id,
+                url: student.picture.url,
+                cloudinaryId: student.picture.cloudinaryId
+                },
+            resume: {
+                id: student.resume.id,
+                url: student.resume.url,
+                cloudinaryId: student.resume.cloudinaryId
+                }
+        }
+    }
+    if (!student.picture && student.resume){
+        var body = {
+            name: student.name,
+            email: student.email,
+            phone: student.phone,
+            country: student.country,
+            location: student.location,
+            mobility: student.mobility,
+            remote: student.remote,
+            resume: {
+                id: student.resume.id,
+                url: student.resume.url,
+                cloudinaryId: student.resume.cloudinaryId
+                },
+        }
+    }
+
+    console.log(body)
 
     return axios.post('https://ob-firstcommit.herokuapp.com/api/student', body, { headers: headers })
 }

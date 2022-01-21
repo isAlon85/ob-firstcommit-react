@@ -24,11 +24,16 @@ function StudentComponent({ state, token }) {
         getStudent(state, token)
             .then((response) => {
                 const tagsFetched = [];
-                if(response.data.tags) {
+                if(response.data.tags){
                     for(let i = 0; i < response.data.tags.length; i++) {
                         tagsFetched.push(response.data.tags[i]);
                     }
                 };
+                var pictureModified = null;
+                if (response.data.picture){
+                    pictureModified = response.data.picture;
+                    pictureModified.url = pictureModified.url.replace("/upload/", "/upload/w_82,h_82/");      
+                }
                 const fetchedStudent = new Student(
                     response.data.id, 
                     response.data.name, 
@@ -39,7 +44,7 @@ function StudentComponent({ state, token }) {
                     response.data.mobility, 
                     response.data.remote, 
                     response.data.user.id, 
-                    response.data.picture ? response.data.picture : null, 
+                    pictureModified,
                     response.data.resume ? response.data.resume : null, 
                     tagsFetched
                 );
@@ -72,7 +77,7 @@ function StudentComponent({ state, token }) {
         if(state.picture) {
             deletePicture(state.picture.cloudinaryId, token)
             .then((responseDel) => {
-            console.log(responseDel);
+                console.log(responseDel);
             })
             .catch((error) => {
                 console.log(error);
@@ -330,7 +335,7 @@ function StudentComponent({ state, token }) {
                             : { backgroundImage: 'url(https://res.cloudinary.com/ialons85/image/upload/w_82,h_82/v1642443448/anonymous_alhvdv.jpg)'} 
                             : null}
                             >
-                                <input type="file" id="file-selector" className="file-selector" accept=".jpg" onChange={ () => changePicture() }></input>
+                                <input type="file" id="file-selector" className="file-selector" accept="image/*" onChange={ () => changePicture() }></input>
                             </label>
                         </div>
                         <div className="student-info-frame">

@@ -23,7 +23,6 @@ export class Student {
         this.remote = remote;
         this.user_id = user_id;
         this.picture = picture;
-        if(picture) this.picture.url = this.picture.url.replace("/upload/", "/upload/w_82,h_82/");
         this.resume = resume;
         this.tags = tags;
     }

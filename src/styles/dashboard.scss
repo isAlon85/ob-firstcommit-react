@@ -1440,11 +1440,72 @@ table {
 	outline: none;
 }
 
+.modal-button-delete {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 5px 5px 5px 10px;
+	position: static;
+	width: fit-content;
+	height: 40px;
+	left: 0px;
+	top: 0px;
+	border: 1px solid $grey-black;
+	background: $white;
+	border-radius: 8px;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px;
+	margin-right: 10px;
+	cursor: pointer;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 100%;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.modal-button-delete span {
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 105%;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: #A5A8B3;
+	flex: none;
+	flex-grow: 0;
+	margin: 0px 5px;
+}
+	
+.modal-button-delete:hover {
+	opacity: 0.8;
+}
+
+.modal-button-delete:active {
+	opacity: 0.6;
+}
+
+.modal-button-delete:focus {
+	outline: none;
+}
+
 .file-selector {
 	display: none;
 }
 
 .bi-cloud-arrow-up {
+	margin-right: 10px;
+}
+
+.bi-card-image {
+	margin-right: 10px;
+}
+
+.bi-file-earmark-pdf {
 	margin-right: 10px;
 }
 
@@ -1470,5 +1531,6 @@ table {
 
 .modal-button-upload-frame {
 	display: flex;
+	align-items: center;
 	flex-direction: row;
 }
