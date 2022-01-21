@@ -40,7 +40,7 @@ function ModalDashboard() {
         const remote = document.getElementById('remote').value === 'En remoto' ? 1 : 0;
         const country = document.getElementById('country').value;
         setDefaultCountry(country);
-        const valueStudent = new Student(1, name, email, phone, country, location, mobility, remote, 1, pictureId, resumeId, null);
+        const valueStudent = new Student(1, name, email, phone, country, location, mobility, remote, 1, pictureId, resumeId, tags);
         setStudent(valueStudent);
         createStudent(valueStudent, authState.token)
             .then((response) => {

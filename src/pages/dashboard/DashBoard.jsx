@@ -15,6 +15,10 @@ function DashBoard() {
     const [isLoading, setLoading] = useState(true);
     const [country, setCountry] = useState(null);
     const [location, setLocation] = useState(null);
+    const [remoteCheck, setRemoteCheck] = useState(false);
+    const [noRemoteCheck, setNoRemoteCheck] = useState(false);    
+    const [mobilityCheck, setMobilityCheck] = useState(false);
+    const [noMobilityCheck, setNoMobilityCheck] = useState(false);
     const [tags, setTags] = useState([]);
 
     const getStudentsFunc = useCallback(() =>{
@@ -86,6 +90,7 @@ function DashBoard() {
         }
     }
     function filterStudents(event) {
+        event.preventDefault()
         setLoading(true);
         const id = event.target.id;
         var countryFilter = country;
@@ -143,7 +148,6 @@ function DashBoard() {
         }
         setStudents(studentsFetched);
         console.log(studentsFetched);
-        console.log(response);
         })
         .catch((error) => {
             console.log(error);
@@ -196,6 +200,7 @@ function DashBoard() {
 	};
 
     const addTag = (event) => {
+        event.preventDefault()
         if(tags.length < 5) {
             var newElement = null;
             var checkDuplicated;
@@ -255,6 +260,10 @@ function DashBoard() {
         setCountry('');
         setLocation('');
         getStudentsFunc();
+        setRemoteCheck(false);
+        setNoRemoteCheck(false);
+        setMobilityCheck(false);
+        setNoMobilityCheck(false);
 	};
 
 
@@ -272,10 +281,10 @@ function DashBoard() {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
                                     </svg>
-                                    <input type="text" id="searchTerm" onKeyUp={doSearch} className="form-control" placeholder="Buscar por Nombre, Email o Palabra clave..." aria-label="Buscar por Nombre, Email o Palabra clave..." aria-describedby="basic-addon1"/>
+                                    <input type="text" id="searchTerm" onKeyUp={ doSearch } className="form-control" placeholder="Buscar por Nombre, Email o Palabra clave..." aria-label="Buscar por Nombre, Email o Palabra clave..." aria-describedby="basic-addon1"/>
                                 </div>
                             </div>
-                            <input type="button" value="+ Añadir Alumnos" onClick={openModal}/>
+                            <input type="button" value="+ Añadir Alumnos" onClick={ openModal }/>
                         </div>
                         <div className="table-outer-2">
                             <div className="table-inner">
@@ -358,22 +367,22 @@ function DashBoard() {
                             <div className="remote-outer">
                                 <p className="label-bold">Presencial / a distancia</p>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="nonremote-checkboxid" className="checkbox" onClick={ filterStudents }/>
+                                    <input type="checkbox" id="nonremote-checkboxid" className="checkbox" onClick={ filterStudents } checked={ noRemoteCheck } onChange={ () => setNoRemoteCheck(!noRemoteCheck) }/>
                                     <span id="remember">Presencial</span>
                                 </div>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="remote-checkboxid" className="checkbox" onClick={ filterStudents }/>
+                                    <input type="checkbox" id="remote-checkboxid" className="checkbox" onClick={ filterStudents } checked={ remoteCheck } onChange={ () => setRemoteCheck(!remoteCheck) }/>
                                     <span id="remember">En remoto</span>
                                 </div>           
                             </div>
                             <div className="transfer-outer">
                                 <p className="label-bold">Posibilidad de translado</p>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="mobility-checkboxid" className="checkbox" onClick={ filterStudents }/>
+                                    <input type="checkbox" id="mobility-checkboxid" className="checkbox" onClick={ filterStudents } checked={ noMobilityCheck } onChange={ () => setNoMobilityCheck(!noMobilityCheck) }/>
                                     <span id="remember">Sí</span>
                                 </div>
                                 <div className="checkbox-option">
-                                    <input type="checkbox" id="nonmobility-checkboxid" className="checkbox" onClick={ filterStudents }/>
+                                    <input type="checkbox" id="nonmobility-checkboxid" className="checkbox" onClick={ filterStudents } checked={ mobilityCheck } onChange={ () => setMobilityCheck(!mobilityCheck) }/>
                                     <span id="remember">No</span>
                                 </div>  
                             </div>

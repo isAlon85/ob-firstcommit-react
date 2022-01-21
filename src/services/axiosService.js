@@ -83,7 +83,8 @@ export const createStudent = (student, token) => {
             country: student.country,
             location: student.location,
             mobility: student.mobility,
-            remote: student.remote
+            remote: student.remote,
+            tags: student.tags
         }
     }
     if (student.picture && !student.resume){
@@ -99,7 +100,8 @@ export const createStudent = (student, token) => {
                 id: student.picture.id,
                 url: student.picture.url,
                 cloudinaryId: student.picture.cloudinaryId
-                }
+                },
+            tags: student.tags
         }
     }
     if (student.picture && student.resume){
@@ -120,7 +122,8 @@ export const createStudent = (student, token) => {
                 id: student.resume.id,
                 url: student.resume.url,
                 cloudinaryId: student.resume.cloudinaryId
-                }
+                },
+            tags: student.tags
         }
     }
     if (!student.picture && student.resume){
@@ -137,6 +140,7 @@ export const createStudent = (student, token) => {
                 url: student.resume.url,
                 cloudinaryId: student.resume.cloudinaryId
                 },
+            tags: student.tags
         }
     }
 
