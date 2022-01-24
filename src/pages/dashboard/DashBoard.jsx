@@ -21,6 +21,7 @@ function DashBoard() {
     const [mobilityCheck, setMobilityCheck] = useState(false);
     const [noMobilityCheck, setNoMobilityCheck] = useState(false);
     const [tags, setTags] = useState([]);
+    const [tagInput, setTagInput] = useState('');
 
     const getStudentsFunc = useCallback(() =>{
         getStudents(null, null, null, null, authState.token)
