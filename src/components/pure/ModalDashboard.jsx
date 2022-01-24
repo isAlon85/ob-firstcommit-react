@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { createStudent } from '../../services/axiosService'
 import { AuthContext } from "../../App.js";
-import { Student } from '../../models/student.class'
+import { Student } from '../../models/student.class';
 import countryList from "../../json/countryList";
-import { deletePicture, createPicture, deleteResume, createResume} from '../../services/axiosService'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { deletePicture, createPicture, deleteResume, createResume} from '../../services/axiosService';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function ModalDashboard() {
 
@@ -18,6 +19,14 @@ function ModalDashboard() {
     var initialCredentials = {
         email: '',
     }
+
+    const loginSchema = Yup.object().shape(
+        {
+            email: Yup.string()
+                    .email('Invalid email format')
+                    .required('Email is required')
+        }
+    );
 
     const { state: authState } = React.useContext(AuthContext);
 
@@ -269,10 +278,38 @@ function ModalDashboard() {
                                     <p>Teléfono</p>
                                     <input type="text" placeholder="Introduce número" id="phone" value={ phone } onChange={ updatePhone }/>
                                 </div>
-                                <div className="modal-user-form-splitted">
-                                    <p>Email</p>
-                                    <input type="text" placeholder="Introduce email" id="email" value={ email } onChange={ updateEmail }/>
-                                </div>
+                                <Formik
+                                    // *** Initial values that the form will take
+                                    enableReinitialize = {true}
+                                    initialValues = { initialCredentials } 
+                                    // *** Yup Validation Schema ***
+                                    validationSchema = {loginSchema}
+                                    // ** onSubmit Event
+                                    onSubmit={async (values) => {
+                                        authUser(values)
+                                    }}
+                                    >
+                                    {/* We obtain props from Formik */}
+                                    {({ values,
+                                        touched,
+                                        errors,
+                                        isSubmitting,
+                                        handleChange,
+                                        handleBlur }) => (
+                                            <Form>
+                                                <div className="modal-user-form-splitted">
+                                                    <p>Email</p>
+                                                    <Field type="text" placeholder="Introduce email" id="email" value={ email } onChange={ updateEmail }/>
+                                                </div>
+                                                {/* Email Errors */}
+                                                {errors.email && touched.email && 
+                                                    (
+                                                        <ErrorMessage className="form-error" name="email" component='div' ></ErrorMessage>
+                                                    )
+                                                }
+                                            </Form>  
+                                    )}
+                                </Formik>
                             </div>
                             <div className="modal-user-form-split">
                                 <div className="modal-user-form-splitted">
