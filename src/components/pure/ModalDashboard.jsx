@@ -395,7 +395,7 @@ function ModalDashboard( props) {
                                 </div>
                             </div>
                             <div className="modal-files-intra">
-                                <p>Documento CV<span style={{ display: pictureLoading ? "flex" : "none" }}>Subiendo</span></p>
+                                <p>Documento CV<span style={{ display: resumeLoading ? "flex" : "none" }}>Subiendo</span></p>
                                 <div className="modal-button-upload-frame">
                                     <label className="modal-button-upload" style={{ display: resume ? "none" : "flex" }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
