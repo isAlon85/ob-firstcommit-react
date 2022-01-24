@@ -6,9 +6,11 @@ import countryList from "../../json/countryList";
 
 function StudentComponent({ state, token }) {
 
-    const [student, setStudent] = useState(null)
-    const [picture, setPicture] = useState(null)
-    const [resume, setResume] = useState(null)
+    const [student, setStudent] = useState(null);
+    const [picture, setPicture] = useState(null);
+    const [pictureLoading, setPictureLoading] = useState(false);
+    const [resume, setResume] = useState(null);
+    const [resumeLoading, setResumeLoading] = useState(false);
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [phone, setPhone] = useState(null);
@@ -72,6 +74,7 @@ function StudentComponent({ state, token }) {
     }, [getStudentFunc])
 
     const changePicture = async () => {
+        setPictureLoading(true);
         const file = await readFile();
         var responsePicture = null;
         if(state.picture) {
@@ -111,6 +114,7 @@ function StudentComponent({ state, token }) {
             console.log(error);
         })
         .finally(() => getStudentFunc())
+        setPictureLoading(false);
     }
 
     const deleteThisResume = async () => {
@@ -137,6 +141,7 @@ function StudentComponent({ state, token }) {
     }
 
     const uploadThisResume = async () => {
+        setResumeLoading(true);
         const file = await readResume();
         var responseResume = null;
         await createResume(file, token)
@@ -156,6 +161,7 @@ function StudentComponent({ state, token }) {
             console.log(error);
         })
         .finally(() => getStudentFunc())
+        setResumeLoading(false);
     }
 
     const update = (event) => {
@@ -279,30 +285,37 @@ function StudentComponent({ state, token }) {
 			case "REACT":
                 if (tagNames.includes( "REACT" )) checkDuplicated = true;
 				studentTags.push({id: 2, name: 'REACT', description: 'React'});
+                event.target.value = '';
 			break;
 			case "ANGULAR":
                 if (tagNames.includes( "ANGULAR" )) checkDuplicated = true;
 				studentTags.push({id: 3, name: 'ANGULAR', description: 'Angular'});
+                event.target.value = '';
 			break;
 			case "VUE":
                 if (tagNames.includes( "VUE" )) checkDuplicated = true;
 				studentTags.push({id: 4, name: 'VUE', description: 'Vue'});
+                event.target.value = '';
 			break;
 			case "SPRING":
                 if (tagNames.includes( "SPRING" )) checkDuplicated = true;
 				studentTags.push({id: 5, name: 'SPRING', description: 'Spring'});
+                event.target.value = '';
 			break;
 			case "JAVA":
                 if (tagNames.includes( "JAVA" )) checkDuplicated = true;
 				studentTags.push({id: 6, name: 'Java', description: 'JAVA'});
+                event.target.value = '';
 			break;
 			case "JAVASCRIPT":
                 if (tagNames.includes( "JAVASCRIPT" )) checkDuplicated = true;
 				studentTags.push({id: 7, name: 'JAVASCRIPT', description: 'JavaScript'});
+                event.target.value = '';
 			break;
 			case "HIBERNATE":
                 if (tagNames.includes( "HIBERNATE" )) checkDuplicated = true;
 				studentTags.push({id: 8, name: 'HIBERNATE', description: 'Hibernate'});
+                event.target.value = '';
 			break;
 			default:
                 checkDuplicated = true;
@@ -355,6 +368,7 @@ function StudentComponent({ state, token }) {
                                 { student ? student.country : null }
                                 </div>
                             </div>
+                            <div className="student-picture-uploading" style={{ display: pictureLoading ? "flex" : "none" }}>Subiendo fotografía</div>
                         </div>
                     </div>
                     <div className="student-info-frame-inner">
@@ -410,7 +424,7 @@ function StudentComponent({ state, token }) {
                             </div>
                         </div>
                         <div className="user-form-big">
-                            <p>Documento CV</p>
+                            <p>Documento CV<span style={{ display: resumeLoading ? "flex" : "none" }}>Subiendo</span></p>
                             <div className="resume-button-container">
                                 <label className="button_upload">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-cloud-arrow-up" viewBox="0 0 16 16">

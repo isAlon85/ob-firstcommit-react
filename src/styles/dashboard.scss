@@ -1334,11 +1334,14 @@ table {
 }
 
 .modal-files-intra p {
+	display: flex;
+	flex-direction: row;
 	height: 16px;
 	left: 0px;
 	top: 0px;
 	margin: 0px;
 	margin-bottom: 12px;
+	margin-right: 12px;
 	font-family: $font;
 	font-style: normal;
 	font-weight: 700;
@@ -1347,6 +1350,25 @@ table {
 	letter-spacing: -0.01em;
 	font-feature-settings: 'pnum' on, 'lnum' on;
 	color: $grey-black;
+}
+
+.modal-files-intra p span{
+	display: flex;
+	flex-direction: row;
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-left: 10px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $green;
 }
 
 .modal-files-intra-labels {

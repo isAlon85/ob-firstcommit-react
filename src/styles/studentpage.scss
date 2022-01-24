@@ -357,6 +357,25 @@ color: $grey-black;
 	color: $grey-2;
 }
 
+.student-picture-uploading{
+	display: flex;
+	flex-direction: row;
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-top: 7px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $green;
+}
+
 .bi-geo-alt {
 	position: static;
 	width: 20px;
@@ -407,19 +426,40 @@ color: $grey-black;
 }
 
 .user-form-big p {
-		height: 16px;
-		left: 0px;
-		top: 0px;
-		margin: 0px;
-		margin-bottom: 12px;
-		font-family: $font;
-		font-style: normal;
-		font-weight: 700;
-		font-size: 14px;
-		line-height: 16px;
-		letter-spacing: -0.01em;
-		font-feature-settings: 'pnum' on, 'lnum' on;
-		color: $grey-black;
+	display: flex;
+	flex-direction: row;
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-black;
+}
+
+.user-form-big p span {
+	display: flex;
+	flex-direction: row;
+	height: 16px;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	margin-bottom: 12px;
+	margin-left: 10px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: -0.01em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $green;
 }
 
 .user-form-big input[type=text] {

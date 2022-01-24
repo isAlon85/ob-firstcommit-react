@@ -40,8 +40,10 @@ function ModalDashboard() {
     const [defaultCountry, setDefaultCountry] = useState('España');
     const [picture, setPicture] = useState(null);
     const [pictureId, setPictureId] = useState(null);
+    const [pictureLoading, setPictureLoading] = useState(false);
     const [resume, setResume] = useState(null);
     const [resumeId, setResumeId] = useState(null);
+    const [resumeLoading, setResumeLoading] = useState(false);
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
@@ -84,6 +86,7 @@ function ModalDashboard() {
     }
 
     const changePicture = async () => {
+        setPictureLoading(true);
         const file = await readFile();
         setPicture(file);
         await createPicture(file, authState.token)
@@ -95,6 +98,7 @@ function ModalDashboard() {
             console.log(error);
         })
         .finally(() => console.log('Picture created'))
+        setPictureLoading(false);
     }
 
     const deletePictureStored = () => {
@@ -125,6 +129,7 @@ function ModalDashboard() {
     }
 
     const changeResume = async () => {
+        setResumeLoading(true);
         const file = await readResume();
         setResume(file);
         await createResume(file, authState.token)
@@ -136,6 +141,7 @@ function ModalDashboard() {
             console.log(error);
         })
         .finally(() => console.log('Resume created'))
+        setResumeLoading(false);
     }
 
     const deleteResumeStored = () => {
@@ -215,41 +221,49 @@ function ModalDashboard() {
                 tagNames.includes( "HTML&CSS" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 1, name: 'HTML&CSS', description: 'HTML & CSS'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "REACT":
                 tagNames.includes( "REACT" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 2, name: 'REACT', description: 'React'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "ANGULAR":
                 tagNames.includes( "ANGULAR" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 3, name: 'ANGULAR', description: 'Angular'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "VUE":
                 tagNames.includes( "VUE" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 4, name: 'VUE', description: 'Vue'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "SPRING":
                 tagNames.includes( "SPRING" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 5, name: 'SPRING', description: 'Spring'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "JAVA":
                 tagNames.includes( "JAVA" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 6, name: 'Java', description: 'JAVA'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "JAVASCRIPT":
                 tagNames.includes( "JAVASCRIPT" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 7, name: 'JAVASCRIPT', description: 'JavaScript'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			case "HIBERNATE":
                 tagNames.includes( "HIBERNATE" ) ? checkDuplicated = true : checkDuplicated = false;
 				newElement = {id: 8, name: 'HIBERNATE', description: 'Hibernate'};
                 checkDuplicated ? null : setTags([...tags, newElement]);
+                event.target.value = '';
 			break;
 			default:
 		}
@@ -350,7 +364,7 @@ function ModalDashboard() {
                         </div>
                         <div className="modal-files-outer">
                             <div className="modal-files-intra">
-                                <p>Foto de perfil</p>
+                                <p>Foto de perfil<span style={{ display: pictureLoading ? "flex" : "none" }}>Subiendo</span></p>
                                 <div className="modal-button-upload-frame">
                                     <label className="modal-button-upload" style={{ display: picture ? "none" : "flex" }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
@@ -378,7 +392,7 @@ function ModalDashboard() {
                                 </div>
                             </div>
                             <div className="modal-files-intra">
-                                <p>Documento CV</p>
+                                <p>Documento CV<span style={{ display: pictureLoading ? "flex" : "none" }}>Subiendo</span></p>
                                 <div className="modal-button-upload-frame">
                                     <label className="modal-button-upload" style={{ display: resume ? "none" : "flex" }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
