@@ -1243,6 +1243,35 @@ table {
 	color: $grey-2;
 }
 
+.modal-user-form-formik {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 9px 15px;
+	position: static;
+	width: 250px;
+	height: 40px;
+	left: 0px;
+	top: 28px;
+	background: $grey-1;
+	border-radius: 8px;
+	border: 0px;
+	flex: none;
+	order: 1;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 0px;
+	font-family: $font;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: 0.005em;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	color: $grey-2;
+}
+
 .modal-select-user-form-splitted {
 	display: flex;
 	flex-direction: row;

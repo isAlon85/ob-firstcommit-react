@@ -59,7 +59,7 @@ function ModalDashboard() {
         createStudent(valueStudent, authState.token)
             .then((response) => {
             console.log(response);
-            window.location.reload(false);
+            closeModal();
             })
             .catch((error) => {
                 console.log(error);
@@ -280,7 +280,6 @@ function ModalDashboard() {
                                 </div>
                                 <Formik
                                     // *** Initial values that the form will take
-                                    enableReinitialize = {true}
                                     initialValues = { initialCredentials } 
                                     // *** Yup Validation Schema ***
                                     validationSchema = {loginSchema}
@@ -299,7 +298,7 @@ function ModalDashboard() {
                                             <Form>
                                                 <div className="modal-user-form-splitted">
                                                     <p>Email</p>
-                                                    <Field type="text" placeholder="Introduce email" id="email" value={ email } onChange={ updateEmail }/>
+                                                    <Field className="modal-user-form-formik" id="email" type="email" name="email" placeholder="Introduce email" onInput={ updateEmail }/>
                                                 </div>
                                                 {/* Email Errors */}
                                                 {errors.email && touched.email && 

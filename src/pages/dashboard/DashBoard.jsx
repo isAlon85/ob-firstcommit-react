@@ -218,48 +218,56 @@ function DashBoard() {
                     newElement = {id: 1, name: 'HTML&CSS', description: 'HTML & CSS'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "REACT":
                     tagNames.includes( "REACT" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 2, name: 'REACT', description: 'React'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "ANGULAR":
                     tagNames.includes( "ANGULAR" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 3, name: 'ANGULAR', description: 'Angular'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "VUE":
                     tagNames.includes( "VUE" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 4, name: 'VUE', description: 'Vue'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "SPRING":
                     tagNames.includes( "SPRING" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 5, name: 'SPRING', description: 'Spring'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "JAVA":
                     tagNames.includes( "JAVA" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 6, name: 'Java', description: 'JAVA'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "JAVASCRIPT":
                     tagNames.includes( "JAVASCRIPT" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 7, name: 'JAVASCRIPT', description: 'JavaScript'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 case "HIBERNATE":
                     tagNames.includes( "HIBERNATE" ) ? checkDuplicated = true : checkDuplicated = false;
                     newElement = {id: 8, name: 'HIBERNATE', description: 'Hibernate'};
                     checkDuplicated ? null : setTags([...tags, newElement]);
                     filterTags(newElement, null);
+                    event.target.value = '';
                 break;
                 default:
             }
