@@ -4,6 +4,7 @@ import { AuthContext } from "../../App.js";
 import { Student } from '../../models/student.class'
 import countryList from "../../json/countryList";
 import { deletePicture, createPicture, deleteResume, createResume} from '../../services/axiosService'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
 
 function ModalDashboard() {
 
@@ -12,6 +13,10 @@ function ModalDashboard() {
 
     function closeModal() {
         document.getElementById('modal').classList.remove(isVisible);
+    }
+
+    var initialCredentials = {
+        email: '',
     }
 
     const { state: authState } = React.useContext(AuthContext);
