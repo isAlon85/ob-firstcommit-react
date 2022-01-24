@@ -22,6 +22,7 @@ function DashBoard() {
     const [noMobilityCheck, setNoMobilityCheck] = useState(false);
     const [tags, setTags] = useState([]);
     const [tagInput, setTagInput] = useState('');
+    const [reload, setReload] = useState(false);
 
     const getStudentsFunc = useCallback(() =>{
         getStudents(null, null, null, null, authState.token)
@@ -59,6 +60,7 @@ function DashBoard() {
             .finally(() => {
                 console.log('Students retrieved');
                 setLoading(false);
+                setReload(false);
             })
     },[authState.token])
 
@@ -70,7 +72,7 @@ function DashBoard() {
         return () => {
             console.log('Student list component is going to unmount');
         }
-    }, [getStudentsFunc])
+    }, [reload])
 
     function doSearch() {
         var tableReg = document.getElementById('myTable');
@@ -315,7 +317,7 @@ function DashBoard() {
 
     return (
         <div>
-            <ModalDashboard getStudentsFunc={ () => getStudentsFunc }></ModalDashboard>
+            <ModalDashboard callBack={ setReload }></ModalDashboard>
             <TableHeader></TableHeader>
             <div className="table-body-outer">
                 <div className="table-body-inner">

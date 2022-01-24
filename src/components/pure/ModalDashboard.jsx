@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { createStudent } from '../../services/axiosService'
 import { AuthContext } from "../../App.js";
@@ -7,12 +8,13 @@ import { deletePicture, createPicture, deleteResume, createResume} from '../../s
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-function ModalDashboard() {
+function ModalDashboard( props) {
 
     const isVisible = "is-visible";
     const countries = countryList;
 
     function closeModal() {
+        props.callBack(true);
         document.getElementById('modal').classList.remove(isVisible);
     }
 
@@ -61,6 +63,7 @@ function ModalDashboard() {
         createStudent(valueStudent, authState.token)
             .then((response) => {
             console.log(response);
+            deleteAll();
             closeModal();
             })
             .catch((error) => {
@@ -312,7 +315,7 @@ function ModalDashboard() {
                                             <Form>
                                                 <div className="modal-user-form-splitted">
                                                     <p>Email</p>
-                                                    <Field className="modal-user-form-formik" id="email" type="email" name="email" placeholder="Introduce email" onInput={ updateEmail }/>
+                                                    <Field className="modal-user-form-formik" id="email" type="email" name="email" placeholder="Introduce email" value={ email } onInput={ updateEmail }/>
                                                 </div>
                                                 {/* Email Errors */}
                                                 {errors.email && touched.email && 
